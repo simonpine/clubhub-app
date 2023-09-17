@@ -1,73 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Image, SafeAreaView, Button } from 'react-native';
 import { useState } from 'react';
-import { useFonts } from 'expo-font';
-import logo from './assets/Colibri.png'
-import bg from './assets/bg.png'
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
+import Login from './screens/login';
 
-export default function App() {
-  const [text, onChangeText] = useState('');
-  const [number, onChangeNumber] = useState('');
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-  return (
-    <View style={styles.container}>
-      <StatusBar style="light" />
-      <Image style={styles.bg} blurRadius={170} source={bg} />
-      <SafeAreaView>
-        <Image style={styles.logo} source={logo} />
-        <Text style={styles.title}>Welcome</Text>
-        <View>
-          <Text style={styles.inputDescrip}>Username:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="SimonPine"
-            onChangeText={onChangeText}
-            value={text}
-          />
-          <Text style={styles.inputDescrip}>Pasword:</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeNumber}
-            value={number}
-            placeholder="********"
-          />
-        </View>
-      </SafeAreaView>
-    </View>
-  );
+const getFonts = () => {
+  return Font.loadAsync({
+    'Geologica-Regular': require('./assets/fonts/Geologica-Regular.ttf'),
+    'Geologica-Bold': require('./assets/fonts/Geologica-Bold.ttf'),
+    'Geologica-Thin': require('./assets/fonts/Geologica-Thin.ttf'),
+    'Geologica-Light': require('./assets/fonts/Geologica-Light.ttf'),
+
+  })
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#102026',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    borderColor: '#ffffff',
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    width: 'auto'
-  },
-  logo: {
-    width: 200,
-    height: 200,
-    // zIndex: 1000
-  },
-  bg: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%'
-  },
-  inputDescrip: {
-    color:'#fff',
-    fontSize: 20,
-  },
-  title: {
-    color: '#fff',
-    fontSize: 25,
-    },
-});
+const Stack = createNativeStackNavigator();
+export default function App() {
+  const [FonstLoaded, setFontsLoaded] = useState(false);
+  if (FonstLoaded) {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen options={{headerShown: false}} name="Login" component={Login} />
+          <Stack.Screen options={{headerShown: false}} name="CreateAccount" component={Login} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+  else {
+    return (
+      <AppLoading
+        startAsync={getFonts}
+        onFinish={() => setFontsLoaded(true)}
+        onError={(error) => console.warn(error)}
+      />
+    );
+  }
+}
