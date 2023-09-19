@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   returnTexr: {
     color: '#fff',
-    fontFamily: 'Geologica-Regular',
+    fontFamily: 'Geologica-Medium',
     fontSize: 17
   },
 });

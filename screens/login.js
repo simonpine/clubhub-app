@@ -107,7 +107,7 @@ const Login = ({ navigation }) => {
                         ><Text style={userName === '' || password === '' ? styles.disabledText : styles.textInButton}>Log in</Text></Pressable>
                         <View style={styles.otherOptionsCont}>
                             <Pressable
-                                onPress={() => navigation.navigate('ForgotPassword')}
+                                onPress={() => navigation.navigate('Recovery')}
                                 onPressIn={() => {
                                     setbuttonSt2({
                                         fontFamily: 'Geologica-Regular',
@@ -225,12 +225,12 @@ const styles = StyleSheet.create({
         opacity: 0.5
     },
     textInButton: {
-        fontFamily: "Geologica-Regular",
+        fontFamily: "Geologica-Medium",
         color: '#ffffff',
         fontSize: 17,
     },
     disabledText: {
-        fontFamily: "Geologica-Regular",
+        fontFamily: "Geologica-Medium",
         color: '#ffffff',
         fontSize: 17,
         opacity: 0.5

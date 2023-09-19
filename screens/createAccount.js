@@ -199,12 +199,12 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     textInButton: {
-        fontFamily: "Geologica-Regular",
+        fontFamily: "Geologica-Medium",
         color: '#ffffff',
         fontSize: 17,
     },
     disabledText: {
-        fontFamily: "Geologica-Regular",
+        fontFamily: "Geologica-Medium",
         color: '#ffffff',
         fontSize: 17,
         opacity: 0.5

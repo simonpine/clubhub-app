@@ -7,6 +7,7 @@ import CreateAccount from './screens/createAccount';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Start from './screens/start';
+import Recovery from './screens/recovery';
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -14,7 +15,7 @@ const getFonts = () => {
     'Geologica-Bold': require('./assets/fonts/Geologica-Bold.ttf'),
     'Geologica-Thin': require('./assets/fonts/Geologica-Thin.ttf'),
     'Geologica-Light': require('./assets/fonts/Geologica-Light.ttf'),
-
+    'Geologica-Medium': require('./assets/fonts/Geologica-Medium.ttf'),
   })
 }
 
@@ -22,18 +23,18 @@ const getFonts = () => {
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+  const [recoveryName, setRecoveryName] = useState('')
   const [FonstLoaded, setFontsLoaded] = useState(false);
   if (FonstLoaded) {
     return (
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Start"
-
-
         >
           <Stack.Screen options={{ headerShown: false }} name="Start" component={Start} />
           <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
           <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
+          <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
         </Stack.Navigator>
       </NavigationContainer>
     );
