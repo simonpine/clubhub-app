@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { StyleSheet } from 'react-native';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import Login from './screens/login';
@@ -8,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Start from './screens/start';
 import Recovery from './screens/recovery';
+import Home from './screens/home';
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -35,6 +35,8 @@ export default function App() {
           <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
           <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
           <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
+          <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
+
         </Stack.Navigator>
       </NavigationContainer>
     );

@@ -8,9 +8,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Start = ({ navigation }) => {
     async function load() {
         const value = await AsyncStorage.getItem('SavedUser')
-        // value !== null
-        if (false) {
+        if (value !== null) {
             navigation.navigate('Home')
+            console.log(value)
         }
         else{
             navigation.navigate('Login')
