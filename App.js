@@ -27,18 +27,20 @@ export default function App() {
   const [FonstLoaded, setFontsLoaded] = useState(false);
   if (FonstLoaded) {
     return (
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Start"
-        >
-          <Stack.Screen options={{ headerShown: false }} name="Start" component={Start} />
-          <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
-          <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
-          <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
-          <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
 
-        </Stack.Navigator>
-      </NavigationContainer>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Start"
+          >
+            <Stack.Screen options={{ headerShown: false }} name="Start" component={Start} />
+            <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+            <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
+            <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
+            <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
+  
+          </Stack.Navigator>
+        </NavigationContainer>
+
     );
   }
   else {

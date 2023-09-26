@@ -86,5 +86,41 @@ export const styles = StyleSheet.create({
         width: '90%',
         left: '5%',
         marginTop: 55
+    },
+    clubListCont: {
+        marginTop: 55,
+        width: '90%',
+        left: '5%',
+    },
+    clubCardCont: {
+        backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
+        padding: 10,
+        marginBottom: 20,
+        borderRadius: 20
+    },
+    pInCard: {
+        // marginTop: 10,
+        color: '#fff',
+        fontFamily: 'Geologica-Light',
+        fontSize: 15,
+        height: 80,
+    },
+    imgInCardCont: {
+        width: '100%',
+        height: 140,
+        // backgroundColor: 'white',
+        borderRadius: 15,
+        marginBottom: 10,
+        overflow: 'hidden'
+    },
+    imgInCard: {
+        width: '100%',
+        height: '100%'
+    },
+    blubCardTitle:{
+        color:'#ffffff',
+        fontFamily: 'Geologica-Bold',
+        fontSize:20
     }
+    
 });

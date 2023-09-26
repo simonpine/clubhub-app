@@ -1,36 +1,29 @@
 import React, { createContext, useState, useEffect } from "react";
 import { getUser } from "../api";
-import { useNavigate, useLocation } from "react-router-dom";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// import { useNavigate, useLocation } from "react-router-dom";
 
 export const ContextUser = createContext()
 
 export const CustomProvider = ({ children }) => {
-    const navigate = useNavigate();
-    const { pathname } = useLocation();
+    // const navigate = useNavigate();
+    // const { pathname } = useLocation();
     const [user, setUser] = useState(null);
     const [userClubs, setUserClubs] = useState([]);
 
 
     useEffect(() => {
         async function setDefault() {
-            if ((localStorage.length) > 0) {
-                const search = JSON.parse(localStorage.getItem("user"))
-                const res = await getUser(search)
-
-                if (res.length > 0) {
-                    await setUser(res[0])
-
-                    await setUserClubs(res[0].clubs)
-                    await pathname === '/login' && navigate('/home')
-                }
-                else {
-                    localStorage.clear()
-                    navigate('/login')
-                }
+            const value = await AsyncStorage.getItem('SavedUser')
+            const res = await getUser(value)
+            if (res.length > 0) {
+                await setUser(res[0])
+                await setUserClubs(res[0].clubs)
+                // await pathname === '/login' && navigate('/home')
             }
-            else {
-                navigate('/login')
-            }
+
+
         }
 
         setDefault()
@@ -45,15 +38,15 @@ export const CustomProvider = ({ children }) => {
                 await setUser(res[0])
 
                 await setUserClubs(res[0].clubs)
-                await pathname === '/login' && navigate('/home')
+                // await pathname === '/login' && navigate('/home')
             }
             else {
                 localStorage.clear()
-                navigate('/login')
+                // navigate('/login')
             }
         }
         else {
-            navigate('/login')
+            // navigate('/login')
         }
     }
 
@@ -61,7 +54,7 @@ export const CustomProvider = ({ children }) => {
         setUser(item)
         setUserClubs(item.clubs)
         localStorage.setItem('user', JSON.stringify(item.userName))
-        navigate('/home')
+        // navigate('/home')
     }
     return (
         <ContextUser.Provider value={{ user, saveUser, userClubs, deafUs }}>
