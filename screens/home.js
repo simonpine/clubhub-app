@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View, Image, Text, TextInput, Pressable } from "react-native"
+import { ActivityIndicator, StyleSheet, View, Image, Text, TextInput, Pressable, ScrollView, RefreshControl } from "react-native"
 import Layout from "../components/layout";
 import logo from '../assets/Colibri.png'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,11 +9,15 @@ import ClubCard from "../components/clubCard";
 import { ContextUser, CustomProvider } from '../context/userContext'
 const Stack = createNativeStackNavigator();
 import HomeView from "./homeView";
+import { useState, useCallback } from "react";
 
 const Home = ({ navigation }) => {
+    const [refreshing, setRefreshing] = useState(false);
+
+
 
     return (
-        <Layout>
+        <>
             <CustomProvider>
                 {/* <Pressable
                   // onPress={() => navigation.navigate('Login')}
@@ -28,20 +32,31 @@ const Home = ({ navigation }) => {
                   </Text>
               </Pressable> */}
 
-
-
                 <ContextUser.Consumer>
-                    {({ user, userClubs }) => {
+                    {({ user, userClubs, deafUs }) => {
+                        const onRefresh = () => {
+                            setRefreshing(true);
+                            setTimeout(() => {
+                                deafUs()
+                                setRefreshing(false);
+                            }, 2000);
+                        }
                         return user !== null && (
-                            <>
+                            <Layout>
                                 {userClubs.length > 0 ?
-                                    <View style={styles.clubListCont}>
-                                        {userClubs.map((clubCard) => {
-                                            return (
-                                                <ClubCard key={clubCard.clubId} user={user} clubCard={clubCard} navigation={navigation} />
-                                            )
-                                        })}
-                                    </View>
+                                    <ScrollView
+                                        contentContainerStyle={styles.scrollView}
+                                        refreshControl={
+                                            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                        }>
+                                        <View style={styles.clubListCont}>
+                                            {userClubs.map((clubCard) => {
+                                                return (
+                                                    <ClubCard key={clubCard.clubId} user={user} clubCard={clubCard} navigation={navigation} />
+                                                )
+                                            })}
+                                        </View>
+                                    </ScrollView>
                                     :
                                     // <View className="EmptyMsg">
                                     //     <View className="allEmptCont">
@@ -58,14 +73,17 @@ const Home = ({ navigation }) => {
                                     //     </View>
                                     // </View>
 
-                                    <></>
+                                    < Text > hola</Text>
                                 }
-                            </>
+                            </Layout>
                         )
                     }}
                 </ContextUser.Consumer>
+
             </CustomProvider>
-        </Layout>
+
+
+        </ >
     )
 }
 

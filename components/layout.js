@@ -14,7 +14,7 @@ function Layout({ children, t, n }) {
             <Text style={styles.returnTexr}>Return</Text>
           </Pressable>
         }
-        <ScrollView style={styles.things}>
+        <View style={styles.things}>
 
           {/* <Login loading={loading} />
         
@@ -31,7 +31,7 @@ function Layout({ children, t, n }) {
 
           {children}
 
-        </ScrollView>
+        </View>
       </View>
     </>
   )

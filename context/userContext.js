@@ -30,23 +30,12 @@ export const CustomProvider = ({ children }) => {
     }, [])
 
     async function deafUs() {
-        if ((localStorage.length) > 0) {
-            const search = JSON.parse(localStorage.getItem("user"))
-            const res = await getUser(search)
-
-            if (res.length > 0) {
-                await setUser(res[0])
-
-                await setUserClubs(res[0].clubs)
-                // await pathname === '/login' && navigate('/home')
-            }
-            else {
-                localStorage.clear()
-                // navigate('/login')
-            }
-        }
-        else {
-            // navigate('/login')
+        const value = await AsyncStorage.getItem('SavedUser')
+        const res = await getUser(value)
+        if (res.length > 0) {
+            await setUser(res[0])
+            await setUserClubs(res[0].clubs)
+            // await pathname === '/login' && navigate('/home')
         }
     }
 

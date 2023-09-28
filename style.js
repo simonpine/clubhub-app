@@ -121,6 +121,6 @@ export const styles = StyleSheet.create({
         color:'#ffffff',
         fontFamily: 'Geologica-Bold',
         fontSize:20
-    }
+    },
     
 });

@@ -44,7 +44,7 @@ const Login = ({ navigation }) => {
         }
         else {
             await AsyncStorage.setItem('SavedUser', res[0].userName)
-            // await setErr(res[0].userName)
+            await navigation.navigate('Home')
         }
         await setIsLoading(false)
         await setPassword('')
