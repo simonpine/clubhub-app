@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Start from './screens/start';
 import Recovery from './screens/recovery';
 import Home from './screens/home';
+import UserSettings from './screens/userSettings';
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -37,7 +38,9 @@ export default function App() {
             <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
             <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
             <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
-  
+            <Stack.Screen options={{ headerShown: false }} name="UserSettings" component={UserSettings} />
+
+
           </Stack.Navigator>
         </NavigationContainer>
 

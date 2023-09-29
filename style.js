@@ -88,9 +88,9 @@ export const styles = StyleSheet.create({
         marginTop: 55
     },
     clubListCont: {
-        marginTop: 55,
         width: '90%',
         left: '5%',
+        marginBottom: 170
     },
     clubCardCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
@@ -117,10 +117,39 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '100%'
     },
-    blubCardTitle:{
-        color:'#ffffff',
+    blubCardTitle: {
+        color: '#ffffff',
         fontFamily: 'Geologica-Bold',
-        fontSize:20
+        fontSize: 20
     },
-    
+    imgForUser: {
+        borderRadius: 100,
+        width: '80%',
+        height: '80%',
+        left: '10%',
+        top: '10%'
+    },
+    buttonOfUser:{
+        // backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
+        width: 50,
+        height: 50,
+        borderRadius: 100,
+        overflow: 'hidden',
+
+    },
+    buttonsAllTimeCont:{
+        backgroundColor: 'rgba(0, 0, 0, 0.7490196078)',
+        width: '90%',
+        left: '5%',
+        position: 'absolute',
+        bottom: 90,
+        zIndex: 100,
+        padding: 10,
+        borderRadius: 100,
+        display: 'flex',
+        flexDirection: 'row',
+        // alignContent: 'space-between',
+        justifyContent: 'space-between',
+    }
+
 });

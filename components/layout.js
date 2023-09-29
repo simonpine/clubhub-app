@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
   },
   things: {
     // backgroundColor: 'white',
-    marginTop: 25,
-    // minHeight: '100%',
+    marginTop: 70,
+    minHeight: '100%',
     width: '100%',
 
   },
