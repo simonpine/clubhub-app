@@ -129,27 +129,53 @@ export const styles = StyleSheet.create({
         left: '10%',
         top: '10%'
     },
-    buttonOfUser:{
+    buttonOfUser: {
         // backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
         borderRadius: 100,
         overflow: 'hidden',
 
     },
-    buttonsAllTimeCont:{
+    buttonsAllTimeCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.7490196078)',
         width: '90%',
         left: '5%',
         position: 'absolute',
         bottom: 90,
         zIndex: 100,
-        padding: 10,
+        padding: 5,
         borderRadius: 100,
         display: 'flex',
         flexDirection: 'row',
         // alignContent: 'space-between',
         justifyContent: 'space-between',
+    },
+    flyButtons: {
+        backgroundColor: 'rgba(0, 0, 0, 0.490196078)',
+        paddingHorizontal: 20,
+        paddingVertical: 5,
+        borderRadius: 100
+    },
+    flyButtonsCont: {
+        // backgroundColor: 'rgba(0, 0, 0, 0.7490196078)',
+        width: '90%',
+        left: '5%',
+        position: 'absolute',
+        top: 0,
+        zIndex: 100,
+        // padding: 10,
+        borderRadius: 100,
+        display: 'flex',
+        flexDirection: 'row',
+        // alignContent: 'space-between',
+        justifyContent: 'space-between',
+        
+    },
+    textInFlyButtons:{
+        color: '#fff',
+        fontFamily: 'Geologica-Medium',
+        fontSize: 15
     }
 
 });
