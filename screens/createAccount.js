@@ -1,4 +1,4 @@
-import { ActivityIndicator, View, Text, TextInput, Pressable } from "react-native"
+import { ActivityIndicator, View, Text, TextInput, Pressable, ScrollView } from "react-native"
 import Layout from "../components/layout";
 import SelectDropdown from 'react-native-select-dropdown'
 import { useState } from "react";
@@ -31,7 +31,9 @@ const CreateAccount = ({ navigation }) => {
         paddingHorizontal: 20,
         paddingVertical: 5,
         borderRadius: 100,
-        marginBottom: 20
+        marginBottom: 20,
+        width: '100%',
+        alignItems: 'center'
     });
 
     async function createA() {
@@ -65,10 +67,11 @@ const CreateAccount = ({ navigation }) => {
                 </View>
             }
             <Layout t={true} n={navigation}>
-                <View style={styles.all}>
+                <ScrollView automaticallyAdjustKeyboardInsets={true} style={styles.all}>
                     <Text style={styles.textTilte}>Create account</Text>
                     <Text style={styles.inputDescrip}>Username:</Text>
                     <TextInput
+                        placeholderTextColor='#C7C7CD'
                         style={styles.input}
                         placeholder="SimonPine"
                         onChangeText={setUserNameRef}
@@ -76,6 +79,7 @@ const CreateAccount = ({ navigation }) => {
                     />
                     <Text style={styles.inputDescrip}>Password:</Text>
                     <TextInput
+                        placeholderTextColor='#C7C7CD'
                         style={styles.input}
                         secureTextEntry={true}
                         placeholder="********"
@@ -84,6 +88,7 @@ const CreateAccount = ({ navigation }) => {
                     />
                     <Text style={styles.inputDescrip}>Confirm password:</Text>
                     <TextInput
+                        placeholderTextColor='#C7C7CD'
                         style={styles.input}
                         secureTextEntry={true}
                         placeholder="********"
@@ -104,6 +109,7 @@ const CreateAccount = ({ navigation }) => {
                     />
                     <Text style={styles.inputDescrip}>Answer:</Text>
                     <TextInput
+                        placeholderTextColor='#C7C7CD'
                         style={styles.input}
                         secureTextEntry={true}
                         placeholder="********"
@@ -112,6 +118,7 @@ const CreateAccount = ({ navigation }) => {
                     />
                     <Text style={styles.inputDescrip}>Confirm answer:</Text>
                     <TextInput
+                        placeholderTextColor='#C7C7CD'
                         style={styles.input}
                         secureTextEntry={true}
                         placeholder="********"
@@ -119,7 +126,7 @@ const CreateAccount = ({ navigation }) => {
                         value={confirmAnswerRef}
                     />
 
-                        <Text style={styles.err}>{err}</Text>
+                    <Text style={styles.err}>{err}</Text>
 
                     <Pressable
                         onPress={createA}
@@ -131,7 +138,9 @@ const CreateAccount = ({ navigation }) => {
                             paddingHorizontal: 20,
                             paddingVertical: 5,
                             borderRadius: 100,
-                            marginBottom: 20
+                            marginBottom: 20,
+                            width: '100%',
+                            alignItems: 'center'
                         })}
                         onPressOut={() => setbuttonSt({
                             backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
@@ -139,10 +148,12 @@ const CreateAccount = ({ navigation }) => {
                             paddingHorizontal: 20,
                             paddingVertical: 5,
                             borderRadius: 100,
-                            marginBottom: 20
+                            marginBottom: 20,
+                            width: '100%',
+                            alignItems: 'center'
                         })}
                     ><Text style={userNameRef.length === 0 || passwordRef.length === 0 || confirmPasswordRef.length === 0 || quiestionRef === '' || answerRef.length === 0 || confirmAnswerRef.length === 0 ? styles.disabledText : styles.textInButton}>Create</Text></Pressable>
-                </View>
+                </ScrollView>
 
             </Layout>
         </>

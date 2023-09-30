@@ -40,6 +40,7 @@ function Layout({ children, t, n }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#131516',
+    overflow: 'auto',
     minHeight: '100%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
   },
   things: {
     // backgroundColor: 'white',
-    marginTop: 70,
+    marginTop: 100,
     minHeight: '100%',
     width: '100%',
 
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     // marginTop: 20
     position: 'absolute',
-    top: 40,
+    top: 60,
     right: '5%',
     // width: 100,
     zIndex: 1000

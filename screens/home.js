@@ -23,10 +23,10 @@ const Home = ({ navigation }) => {
                                 setRefreshing(false);
                             }, 2000);
                         }
-                        return user !== null && (
+                        return user !== null ? (
                             <>
                                 <Layout>
-                                    <View  style={styles.buttonsAllTimeCont}>
+                                    <View style={styles.buttonsAllTimeCont}>
                                         <Pressable style={styles.buttonOfUser} onPress={() => navigation.navigate('UserSettings')} >
                                             {user.userImg !== null ?
                                                 <Image style={styles.imgForUser} source={{
@@ -45,7 +45,6 @@ const Home = ({ navigation }) => {
                                     </View>
                                     {userClubs.length > 0 ?
                                         <ScrollView
-                                            contentContainerStyle={styles.scrollView}
                                             refreshControl={
                                                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                                             }>
@@ -78,6 +77,14 @@ const Home = ({ navigation }) => {
                                 </Layout>
                             </>
                         )
+                            :
+                            (
+                                <Layout>
+                                    <View style={styles.isLoading}>
+                                        <ActivityIndicator size={60} color="#d6ad7b" />
+                                    </View>
+                                </Layout>
+                            )
                     }}
                 </ContextUser.Consumer>
 

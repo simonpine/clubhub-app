@@ -42,7 +42,7 @@ export const CustomProvider = ({ children }) => {
     function saveUser(item) {
         setUser(item)
         setUserClubs(item.clubs)
-        localStorage.setItem('user', JSON.stringify(item.userName))
+        AsyncStorage.setItem('SavedUser', item)
         // navigate('/home')
     }
     return (

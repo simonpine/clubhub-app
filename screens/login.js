@@ -5,6 +5,7 @@ import { getUser } from '../api'
 import { stringMd5 as md5 } from 'react-native-quick-md5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Layout from "../components/layout";
+import { ContextUser, CustomProvider } from '../context/userContext'
 
 
 const Login = ({ navigation }) => {
@@ -20,7 +21,9 @@ const Login = ({ navigation }) => {
         alignSelf: 'flex-start',
         paddingHorizontal: 20,
         paddingVertical: 5,
-        borderRadius: 100
+        borderRadius: 100,
+        width: '100%',
+        alignItems: 'center'
     });
 
     const [buttonSt2, setbuttonSt2] = useState({
@@ -35,21 +38,6 @@ const Login = ({ navigation }) => {
         color: '#4F6273',
     });
 
-    async function LogInFunction(evt) {
-        await setErr('')
-        await setIsLoading(true)
-        const res = await getUser(userName)
-        if (res.length === 0 || res[0].pasword !== md5(password)) {
-            await setErr('Invalid username/password')
-        }
-        else {
-            await AsyncStorage.setItem('SavedUser', res[0].userName)
-            await navigation.navigate('Home')
-        }
-        await setIsLoading(false)
-        await setPassword('')
-        await setUserName('')
-    }
 
     return (
         <>
@@ -72,39 +60,67 @@ const Login = ({ navigation }) => {
                     <View style={styles.inputCont}>
                         <Text style={styles.inputDescrip}>Username:</Text>
                         <TextInput
+                            placeholderTextColor='#C7C7CD'
                             style={styles.input}
                             placeholder="SimonPine"
                             onChangeText={setUserName}
-                            value={userName}
+                            secureTextEntry={false}
                         />
                         <Text style={styles.inputDescrip}>Pasword:</Text>
                         <TextInput
+                            placeholderTextColor='#C7C7CD'
                             style={styles.input}
                             onChangeText={setPassword}
-                            value={password}
                             secureTextEntry={true}
                             placeholder="********"
                         />
                         <Text style={styles.err}>{err}</Text>
-                        <Pressable
-                            onPress={LogInFunction}
-                            style={userName === '' || password === '' ? styles.disabled : buttonSt}
-                            disabled={userName === '' || password === ''}
-                            onPressIn={() => setbuttonSt({
-                                backgroundColor: 'rgba(79, 98, 115, 0.3)',
-                                alignSelf: 'flex-start',
-                                paddingHorizontal: 20,
-                                paddingVertical: 5,
-                                borderRadius: 100
-                            })}
-                            onPressOut={() => setbuttonSt({
-                                backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
-                                alignSelf: 'flex-start',
-                                paddingHorizontal: 20,
-                                paddingVertical: 5,
-                                borderRadius: 100
-                            })}
-                        ><Text style={userName === '' || password === '' ? styles.disabledText : styles.textInButton}>Log in</Text></Pressable>
+                        <CustomProvider>
+                            <ContextUser.Consumer>
+                                {({ deafUs }) => {
+                                    async function LogInFunction(evt) {
+                                        await setErr('')
+                                        await setIsLoading(true)
+                                        const res = await getUser(userName)
+                                        if (res.length === 0 || res[0].pasword !== md5(password)) {
+                                            await setErr('Invalid username/password')
+                                        }
+                                        else {
+                                            await AsyncStorage.setItem('SavedUser', res[0].userName)
+                                            await deafUs()
+                                            await navigation.navigate('Home')
+                                        }
+                                        await setIsLoading(false)
+                                    }
+                                    return (
+                                        <Pressable
+                                            onPress={LogInFunction}
+                                            style={userName === '' || password === '' ? styles.disabled : buttonSt}
+                                            disabled={userName === '' || password === ''}
+                                            onPressIn={() => setbuttonSt({
+                                                backgroundColor: 'rgba(79, 98, 115, 0.3)',
+                                                alignSelf: 'flex-start',
+                                                paddingHorizontal: 20,
+                                                paddingVertical: 5,
+                                                borderRadius: 100,
+                                                width: '100%',
+                                                alignItems: 'center'
+                                            })}
+                                            onPressOut={() => setbuttonSt({
+                                                backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
+                                                alignSelf: 'flex-start',
+                                                paddingHorizontal: 20,
+                                                paddingVertical: 5,
+                                                borderRadius: 100,
+                                                width: '100%',
+                                                alignItems: 'center'
+                                            })}
+                                        ><Text style={userName === '' || password === '' ? styles.disabledText : styles.textInButton}>Log in</Text>
+                                        </Pressable>
+                                    )
+                                }}
+                            </ContextUser.Consumer>
+                        </CustomProvider>
                         <View style={styles.otherOptionsCont}>
                             <Pressable
                                 onPress={() => navigation.navigate('Recovery')}
@@ -160,7 +176,7 @@ const styles = StyleSheet.create({
     },
     otherOptionsCont: {
         width: '100%',
-        marginTop: 30,
+        marginTop: 50,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
@@ -222,7 +238,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 5,
         borderRadius: 100,
-        opacity: 0.5
+        opacity: 0.5,
+        width: '100%',
+        alignItems: 'center'
     },
     textInButton: {
         fontFamily: "Geologica-Medium",

@@ -29,7 +29,9 @@ export const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 100,
         opacity: 0.5,
-        marginBottom: 20
+        marginBottom: 20,
+        width: '100%',
+        alignItems: 'center'
     },
     dropdown4RowTxtStyle: {
         color: '#fff',
@@ -83,14 +85,14 @@ export const styles = StyleSheet.create({
         fontSize: 20,
     },
     all: {
-        width: '90%',
-        left: '5%',
-        marginTop: 55
+        paddingHorizontal: '5%',
+        marginTop: 55,
+        marginBottom: 120
     },
     clubListCont: {
         width: '90%',
         left: '5%',
-        marginBottom: 170
+        marginBottom: 190,
     },
     clubCardCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
@@ -124,10 +126,10 @@ export const styles = StyleSheet.create({
     },
     imgForUser: {
         borderRadius: 100,
-        width: '80%',
-        height: '80%',
-        left: '10%',
-        top: '10%'
+        width: '90%',
+        height: '90%',
+        left: '5%',
+        top: '5%'
     },
     buttonOfUser: {
         // backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
@@ -142,7 +144,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         left: '5%',
         position: 'absolute',
-        bottom: 90,
+        bottom: 130,
         zIndex: 100,
         padding: 5,
         borderRadius: 100,
@@ -170,12 +172,64 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         // alignContent: 'space-between',
         justifyContent: 'space-between',
-        
+
     },
-    textInFlyButtons:{
+    textInFlyButtons: {
         color: '#fff',
         fontFamily: 'Geologica-Medium',
-        fontSize: 15
-    }
+        fontSize: 17
+    },
+    isLoading: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.65)',
+        zIndex: 1000,
+        alignContent: 'center',
+        justifyContent: 'center',
+    },
+    userImageInSettingsCont: {
 
+        width: 90,
+        height: 90,
+        backgroundColor: 'rgba(0, 0, 0, 0.490196078)',
+        // overflow: 'hidden',
+        borderRadius: 100,
+        // alignSelf: 'center',
+        marginBottom: 20
+    },
+    buttonToFlyBoxes: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.190196078)',
+        position: 'absolute',
+        zIndex: 100,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    boxToConfirm: {
+
+        backgroundColor: 'rgba(0, 0, 0, 0.890196078)',
+        padding: 20,
+        borderRadius: 20
+    },
+    confirmText: {
+        color: '#ffffff',
+        fontFamily: 'Geologica-Medium',
+        fontSize: 20,
+        marginBottom: 20
+    },
+    ConfirmButtons: {
+        backgroundColor: 'rgba(65, 78, 90, 0.5568627451)',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 20,
+        paddingVertical: 5,
+        borderRadius: 100,
+    },
+    confirmButtonsCont: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignContent: 'space-between',
+        justifyContent: 'space-between'
+    }
 });

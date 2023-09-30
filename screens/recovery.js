@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View, Image, Text, TextInput, Pressable } from "react-native"
+import { ActivityIndicator, View, Text, TextInput, Pressable } from "react-native"
 import Layout from "../components/layout";
 import { useState } from "react";
 import { getUser, editUser } from "../api";
@@ -66,6 +66,7 @@ const Recovery = ({ navigation }) => {
                         <Text style={styles.textTilte}>Recover password</Text>
                         <Text style={styles.inputDescrip}>Answer:</Text>
                         <TextInput
+                            placeholderTextColor='#C7C7CD'
                             style={styles.input}
                             secureTextEntry={true}
                             placeholder="********"
@@ -74,6 +75,7 @@ const Recovery = ({ navigation }) => {
                         />
                         <Text style={styles.inputDescrip}>New password:</Text>
                         <TextInput
+                            placeholderTextColor='#C7C7CD'
                             style={styles.input}
                             secureTextEntry={true}
                             placeholder="********"
@@ -82,6 +84,7 @@ const Recovery = ({ navigation }) => {
                         />
                         <Text style={styles.inputDescrip}>Confirm password:</Text>
                         <TextInput
+                            placeholderTextColor='#C7C7CD'
                             style={styles.input}
                             secureTextEntry={true}
                             placeholder="********"
@@ -119,6 +122,7 @@ const Recovery = ({ navigation }) => {
                         <Text style={styles.textTilte}>Recover password</Text>
                         <Text style={styles.inputDescrip}>Username:</Text>
                         <TextInput
+                            placeholderTextColor='#C7C7CD'
                             style={styles.input}
                             placeholder="SimonPine"
                             onChangeText={setUserNameRef}
