@@ -1,15 +1,17 @@
-import { ActivityIndicator, StyleSheet, View, Image, Text, Pressable, ScrollView, RefreshControl } from "react-native"
+import { ActivityIndicator, StyleSheet, View, Image, Text, Pressable, ScrollView, RefreshControl, Animated } from "react-native"
 import Layout from "../components/layout";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from "../style";
 import ClubCard from "../components/clubCard";
 import { ContextUser, CustomProvider } from '../context/userContext'
-import { useState, useCallback } from "react";
+import { useState, useRef } from "react";
 import { usersImg } from "../api";
 import userImg from '../assets/user.png'
 import plusImg from '../assets/plus.png'
+import empty from '../assets/empty.png'
+
 
 const Home = ({ navigation }) => {
+    const [plusing, setPlusing] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     return (
         <>
@@ -25,6 +27,22 @@ const Home = ({ navigation }) => {
                         }
                         return user !== null ? (
                             <>
+                                {plusing &&
+                                    <>
+                                        <Pressable style={styles.bgToClose} onPress={() => setPlusing(false)}>
+
+                                        </Pressable>
+                                        <View style={styles.optionsCont}>
+                                            <Pressable>
+                                                <Text style={styles.clubItercactions}>Join club</Text>
+                                            </Pressable>
+                                            <Pressable>
+                                                <Text style={styles.clubItercactions}>Create club</Text>
+                                            </Pressable>
+                                        </View>
+                                    </>
+                                }
+
                                 <Layout>
                                     <View style={styles.buttonsAllTimeCont}>
                                         <Pressable style={styles.buttonOfUser} onPress={() => navigation.navigate('UserSettings')} >
@@ -36,8 +54,8 @@ const Home = ({ navigation }) => {
                                                 <Image style={styles.imgForUser} source={userImg} />
                                             }
                                         </Pressable>
-                                        {/* <Text>Holas</Text> */}
-                                        <Pressable style={styles.buttonOfUser} onPress={() => { }} >
+                                        <Text style={styles.textInMenu}>ClubHub</Text>
+                                        <Pressable style={styles.buttonOfUser} onPress={() => { setPlusing(true) }} >
 
                                             <Image style={styles.imgForUser} source={plusImg} />
 
@@ -57,33 +75,33 @@ const Home = ({ navigation }) => {
                                             </View>
                                         </ScrollView>
                                         :
-                                        // <View className="EmptyMsg">
-                                        //     <View className="allEmptCont">
-                                        //         <img className="empty" src={empty} alt="empty" />
-                                        //         <Text className="noH3">You are not in any club</Text>
-                                        //         <View className="linksEmp">
-                                        //             <Link style={{ margin: '0px' }} to={{
-                                        //                 pathname: "/joinClub",
-                                        //             }} className="getInCreate">Join club</Link>
-                                        //             <Link to={{
-                                        //                 pathname: "/createClub",
-                                        //             }} className="getInCreate">Create club</Link>
-                                        //         </View>
-                                        //     </View>
-                                        // </View>
+                                        <View style={styles.EmptyMsg}>
+                                            <Image style={styles.empty} source={empty} alt="empty" />
+                                            <Text style={styles.noH3}>You are not in any club</Text>
+                                            <View style={styles.linksEmp}>
+                                                <Pressable style={styles.flyButtons}>
+                                                    <Text style={styles.textInFlyButtons}>Join club</Text>
+                                                </Pressable>
+                                                <Pressable style={styles.flyButtons}>
+                                                    <Text style={styles.textInFlyButtons}>Create club</Text>
+                                                </Pressable>
+                                            </View>
+                                        </View>
 
-                                        <Text>hola</Text>
+                                        // <Text>hola</Text>
                                     }
                                 </Layout>
                             </>
                         )
                             :
                             (
-                                <Layout>
+                                <>
                                     <View style={styles.isLoading}>
                                         <ActivityIndicator size={60} color="#d6ad7b" />
                                     </View>
-                                </Layout>
+                                    <Layout>
+                                    </Layout>
+                                </>
                             )
                     }}
                 </ContextUser.Consumer>

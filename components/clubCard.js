@@ -24,11 +24,13 @@ function ClubCard({ clubCard, navigation }) {
                     {clubCard.own ? <Text style={{
                         color: '#00ff6a',
                         fontFamily: 'Geologica-Regular',
-                        fontSize: 17
+                        fontSize: 15,
+                        marginVertical: 5
                     }}>Owner</Text> : <Text style={{
                         color: '#5da2fc',
                         fontFamily: 'Geologica-Regular',
-                        fontSize: 17
+                        fontSize: 15,
+                        marginVertical: 5
                     }}>Member</Text>}
 
                 </View>

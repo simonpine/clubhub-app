@@ -174,7 +174,7 @@ const UserSettings = ({ navigation }) => {
                                                 <Pressable onPress={setTheData} style={styles.ConfirmButtons}>
                                                     <Text style={styles.textInButton}>Yes, save</Text>
                                                 </Pressable>
-                                                <Pressable onPress={()=> setSure(false)} style={styles.ConfirmButtons}>
+                                                <Pressable onPress={() => setSure(false)} style={styles.ConfirmButtons}>
                                                     <Text style={{
                                                         fontFamily: "Geologica-Medium",
                                                         color: 'rgba(241, 128, 128, 0.7882352941)',
@@ -283,11 +283,14 @@ const UserSettings = ({ navigation }) => {
                         )
                             :
                             (
-                                <Layout>
+                                <>
                                     <View style={styles.isLoading}>
                                         <ActivityIndicator size={60} color="#d6ad7b" />
                                     </View>
-                                </Layout>
+                                    <Layout>
+
+                                    </Layout>
+                                </>
                             )
                     }}
                 </ContextUser.Consumer>

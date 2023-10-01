@@ -103,7 +103,7 @@ export const styles = StyleSheet.create({
     pInCard: {
         // marginTop: 10,
         color: '#fff',
-        fontFamily: 'Geologica-Light',
+        fontFamily: 'Geologica-Thin',
         fontSize: 15,
         height: 80,
     },
@@ -150,13 +150,13 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         display: 'flex',
         flexDirection: 'row',
-        // alignContent: 'space-between',
         justifyContent: 'space-between',
+        alignItems: 'center'
     },
     flyButtons: {
         backgroundColor: 'rgba(0, 0, 0, 0.490196078)',
         paddingHorizontal: 20,
-        paddingVertical: 5,
+        paddingVertical: 7.5,
         borderRadius: 100
     },
     flyButtonsCont: {
@@ -217,7 +217,8 @@ export const styles = StyleSheet.create({
         color: '#ffffff',
         fontFamily: 'Geologica-Medium',
         fontSize: 20,
-        marginBottom: 20
+        marginBottom: 20,
+        
     },
     ConfirmButtons: {
         backgroundColor: 'rgba(65, 78, 90, 0.5568627451)',
@@ -231,5 +232,59 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'space-between',
         justifyContent: 'space-between'
+    },
+    optionsCont: {
+        width: '100%',
+        height: 200,
+        position: 'absolute',
+        backgroundColor: 'rgba(0, 0, 0, 0.95196078)',
+        bottom: 0,
+        zIndex: 10,
+        borderRadius: 20,
+        justifyContent: 'space-between',
+        paddingBottom: 70,
+        paddingHorizontal: 20,
+        paddingTop: 50
+
+    },
+    clubItercactions: {
+        color: '#fff',
+        fontFamily: 'Geologica-Medium',
+        fontSize: 20
+    },
+    bgToClose: {
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        zIndex: 10
+    },
+    textInMenu: {
+        color: '#fff',
+        fontFamily: 'Geologica-Regular',
+        fontSize: 17
+    },
+    empty: {
+        width: 200,
+        height: 200
+    },
+    noH3: {
+        color: '#fff',
+        fontFamily: 'Geologica-Thin',
+        fontSize: 20,
+    },
+    EmptyMsg: {
+        width: '100%',
+        height: '80%',
+        alignContent: "center",
+        alignItems: 'center',
+        justifyContent:'center',
+    },
+    linksEmp: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        // width: '100%',
+        width: 270,
+        marginTop: 20
     }
 });

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, Text, ScrollView, Pressable } from 'react-native';
+import { StyleSheet, View, Image, Text, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import bg from '../assets/bg.png'
 function Layout({ children, t, n }) {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    opacity: 0.8
+    opacity: 0.3
   },
   things: {
     // backgroundColor: 'white',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   returnCont: {
     backgroundColor: 'rgba(0, 0, 0, 0.5490196078)',
     paddingHorizontal: 20,
-    paddingVertical: 5,
+    paddingVertical: 7.5,
     borderRadius: 100,
     alignSelf: 'flex-end',
     // marginTop: 20
