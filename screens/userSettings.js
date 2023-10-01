@@ -16,7 +16,7 @@ const UserSettings = ({ navigation }) => {
         backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
         alignSelf: 'flex-start',
         paddingHorizontal: 20,
-        paddingVertical: 5,
+        paddingVertical: 7.5,
         borderRadius: 100,
         width: '100%',
         alignItems: 'center'
@@ -259,7 +259,7 @@ const UserSettings = ({ navigation }) => {
                                                     backgroundColor: 'rgba(79, 98, 115, 0.3)',
                                                     alignSelf: 'flex-start',
                                                     paddingHorizontal: 20,
-                                                    paddingVertical: 5,
+                                                    paddingVertical: 7.5,
                                                     borderRadius: 100,
                                                     width: '100%',
                                                     alignItems: 'center'
@@ -268,7 +268,7 @@ const UserSettings = ({ navigation }) => {
                                                     backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
                                                     alignSelf: 'flex-start',
                                                     paddingHorizontal: 20,
-                                                    paddingVertical: 5,
+                                                    paddingVertical: 7.5,
                                                     borderRadius: 100,
                                                     width: '100%',
                                                     alignItems: 'center'

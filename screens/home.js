@@ -3,14 +3,19 @@ import Layout from "../components/layout";
 import { styles } from "../style";
 import ClubCard from "../components/clubCard";
 import { ContextUser, CustomProvider } from '../context/userContext'
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import { usersImg } from "../api";
 import userImg from '../assets/user.png'
 import plusImg from '../assets/plus.png'
 import empty from '../assets/empty.png'
-
+import { useIsFocused } from "@react-navigation/native";
 
 const Home = ({ navigation }) => {
+    const isFocused = useIsFocused();
+    useEffect(() => {
+        // isFocused && updateSomeFunction()
+    }, [isFocused]);
+
     const [plusing, setPlusing] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     return (
@@ -33,7 +38,7 @@ const Home = ({ navigation }) => {
 
                                         </Pressable>
                                         <View style={styles.optionsCont}>
-                                            <Pressable>
+                                            <Pressable onPress={() => navigation.navigate('JoinClub')}>
                                                 <Text style={styles.clubItercactions}>Join club</Text>
                                             </Pressable>
                                             <Pressable>
@@ -75,18 +80,25 @@ const Home = ({ navigation }) => {
                                             </View>
                                         </ScrollView>
                                         :
-                                        <View style={styles.EmptyMsg}>
-                                            <Image style={styles.empty} source={empty} alt="empty" />
-                                            <Text style={styles.noH3}>You are not in any club</Text>
-                                            <View style={styles.linksEmp}>
-                                                <Pressable style={styles.flyButtons}>
-                                                    <Text style={styles.textInFlyButtons}>Join club</Text>
-                                                </Pressable>
-                                                <Pressable style={styles.flyButtons}>
-                                                    <Text style={styles.textInFlyButtons}>Create club</Text>
-                                                </Pressable>
+                                        <ScrollView
+                                            style={styles.EmptyMsgConr}
+                                            refreshControl={
+                                                <RefreshControl  refreshing={refreshing} onRefresh={onRefresh} />
+                                            }
+                                        >
+                                            <View style={styles.EmptyMsg}>
+                                                <Image style={styles.empty} source={empty} alt="empty" />
+                                                <Text style={styles.noH3}>You are not in any club</Text>
+                                                <View style={styles.linksEmp}>
+                                                    <Pressable onPress={() => navigation.navigate('JoinClub')} style={styles.flyButtons}>
+                                                        <Text style={styles.textInFlyButtons}>Join club</Text>
+                                                    </Pressable>
+                                                    <Pressable style={styles.flyButtons}>
+                                                        <Text style={styles.textInFlyButtons}>Create club</Text>
+                                                    </Pressable>
+                                                </View>
                                             </View>
-                                        </View>
+                                        </ScrollView>
 
                                         // <Text>hola</Text>
                                     }

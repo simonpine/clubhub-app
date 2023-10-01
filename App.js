@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Start from './screens/start';
 import Recovery from './screens/recovery';
 import Home from './screens/home';
+import JoinClub from './screens/joinClub';
 import UserSettings from './screens/userSettings';
 
 const getFonts = () => {
@@ -39,6 +40,7 @@ export default function App() {
             <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
             <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
             <Stack.Screen options={{ headerShown: false }} name="UserSettings" component={UserSettings} />
+            <Stack.Screen options={{ headerShown: false }} name="JoinClub" component={JoinClub} />
 
 
           </Stack.Navigator>
