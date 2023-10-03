@@ -20,7 +20,6 @@ const Home = ({ navigation }) => {
     const [refreshing, setRefreshing] = useState(false);
     return (
         <>
-            <CustomProvider>
                 <ContextUser.Consumer>
                     {({ user, userClubs, deafUs }) => {
                         const onRefresh = () => {
@@ -38,10 +37,14 @@ const Home = ({ navigation }) => {
 
                                         </Pressable>
                                         <View style={styles.optionsCont}>
-                                            <Pressable onPress={() => navigation.navigate('JoinClub')}>
+                                            <Pressable onPress={() => {
+                                                setPlusing(false)
+                                                navigation.navigate('JoinClub')}}>
                                                 <Text style={styles.clubItercactions}>Join club</Text>
                                             </Pressable>
-                                            <Pressable onPress={()=> navigation.navigate('CreateClub')}>
+                                            <Pressable onPress={()=> {
+                                                setPlusing(false)
+                                                navigation.navigate('CreateClub')}}>
                                                 <Text style={styles.clubItercactions}>Create club</Text>
                                             </Pressable>
                                         </View>
@@ -49,7 +52,7 @@ const Home = ({ navigation }) => {
                                 }
 
                                 <Layout>
-                                    <View style={styles.buttonsAllTimeCont}>
+                                    <View style={styles.buttonsAllTimeCont2}>
                                         <Pressable style={styles.buttonOfUser} onPress={() => navigation.navigate('UserSettings')} >
                                             {user.userImg !== null ?
                                                 <Image style={styles.imgForUser} source={{
@@ -59,7 +62,7 @@ const Home = ({ navigation }) => {
                                                 <Image style={styles.imgForUser} source={userImg} />
                                             }
                                         </Pressable>
-                                        <Text style={styles.textInMenu}>ClubHub</Text>
+                                        {/* <Text style={styles.textInMenu}>ClubHub</Text> */}
                                         <Pressable style={styles.buttonOfUser} onPress={() => { setPlusing(true) }} >
 
                                             <Image style={styles.imgForUser} source={plusImg} />
@@ -90,10 +93,14 @@ const Home = ({ navigation }) => {
                                                 <Image style={styles.empty} source={empty} alt="empty" />
                                                 <Text style={styles.noH3}>You are not in any club</Text>
                                                 <View style={styles.linksEmp}>
-                                                    <Pressable onPress={() => navigation.navigate('JoinClub')} style={styles.flyButtons}>
+                                                    <Pressable onPress={() => {
+                                                        setPlusing(false)
+                                                        navigation.navigate('JoinClub')}} style={styles.flyButtons}>
                                                         <Text style={styles.textInFlyButtons}>Join club</Text>
                                                     </Pressable>
-                                                    <Pressable onPress={()=> navigation.navigate('CreateClub')} style={styles.flyButtons}>
+                                                    <Pressable onPress={()=> {
+                                                        setPlusing(false)
+                                                        navigation.navigate('CreateClub')}} style={styles.flyButtons}>
                                                         <Text style={styles.textInFlyButtons}>Create club</Text>
                                                     </Pressable>
                                                 </View>
@@ -118,7 +125,6 @@ const Home = ({ navigation }) => {
                     }}
                 </ContextUser.Consumer>
 
-            </CustomProvider>
 
 
         </ >

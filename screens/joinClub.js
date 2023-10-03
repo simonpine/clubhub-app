@@ -31,7 +31,6 @@ const JoinClub = ({ navigation }) => {
                     <ActivityIndicator size={60} color="#d6ad7b" />
                 </View>
             }
-            <CustomProvider>
                 <ContextUser.Consumer>
                     {({ user, userClubs, deafUs }) => {
                         async function retur() {
@@ -159,7 +158,6 @@ const JoinClub = ({ navigation }) => {
                             )
                     }}
                 </ContextUser.Consumer>
-            </CustomProvider>
         </>
     )
 }

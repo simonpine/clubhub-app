@@ -92,13 +92,13 @@ export const styles = StyleSheet.create({
     },
     inputDescrip: {
         marginBottom: 5,
-        fontFamily: "Geologica-Regular",
+        fontFamily: "Geologica-Thin",
         color: '#fff',
         fontSize: 20,
     },
     all: {
         paddingHorizontal: '5%',
-        marginTop: 55,
+        marginTop: 60,
         marginBottom: 120
     },
     all2: {
@@ -110,6 +110,12 @@ export const styles = StyleSheet.create({
         width: '90%',
         left: '5%',
         marginBottom: 190,
+    },
+    EventsCont: {
+        width: '90%',
+        left: '5%',
+        marginBottom: 200,
+        marginTop: 65
     },
     clubCardCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
@@ -143,21 +149,46 @@ export const styles = StyleSheet.create({
     },
     imgForUser: {
         borderRadius: 100,
+        width: '100%',
+        height: '100%',
+        // left: '5%',
+        // top: '5%'
+    },
+    buttonOfUser: {
+        // backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
+        width: 40,
+        height: 40,
+        borderRadius: 100,
+        overflow: 'hidden',
+
+    },
+    buttonOfNav: {
+        width: 30,
+        height: 30,
+        overflow: 'visible',
+    },
+    imgForNav: {
         width: '90%',
         height: '90%',
         left: '5%',
         top: '5%'
     },
-    buttonOfUser: {
-        // backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
-        width: 45,
-        height: 45,
-        borderRadius: 100,
-        overflow: 'hidden',
-
-    },
     buttonsAllTimeCont: {
-        backgroundColor: 'rgba(0, 0, 0, 0.7490196078)',
+        backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
+        width: '90%',
+        left: '5%',
+        position: 'absolute',
+        bottom: 130,
+        zIndex: 100,
+        padding: 10,
+        borderRadius: 100,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    buttonsAllTimeCont2: {
+        backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
         width: '90%',
         left: '5%',
         position: 'absolute',
@@ -425,5 +456,91 @@ export const styles = StyleSheet.create({
         fontSize: 30,
         fontFamily: 'Geologica-Bold',
         margin: 10
+    },
+    messageFromOther: {
+        backgroundColor: 'rgba(0, 0, 0, 0.490196078)',
+        marginTop: 20,
+        borderRadius: 15,
+        padding: 10
+    },
+    dateMessage: {
+        fontFamily: 'Geologica-Thin',
+        fontSize: 12,
+        color: '#d6ad7b',
+        marginBottom: 10
+    },
+    textMessage: {
+        color: '#fff',
+        fontSize: 15,
+        fontFamily: 'Geologica-Regular',
+    },
+    imgUploadedByUser: {
+        width: '100%',
+        height: 150,
+        borderRadius: 10,
+        marginTop: 10
+    },
+    returnCont: {
+        backgroundColor: 'rgba(0, 0, 0, 0.900196078)',
+        padding: 15,
+        // paddingVertical: 7.5,
+        borderRadius: 100,
+        // marginTop: 20
+        position: 'absolute',
+        top: 0,
+        left: '5%',
+        // width: 100,
+        zIndex: 1000
+    },
+    imageForNav: {
+        width: 25,
+        height: 25
+    },
+    documentImg: {
+        width: 40,
+        height: 40,
+    },
+    documentContainer: {
+        flexDirection: 'row',
+        marginTop: 10,
+        padding: 10,
+        backgroundColor: 'white',
+        borderRadius: 7,
+        backgroundColor: 'rgba(214, 173, 123, 0.1)',
+        alignItems: 'center'
+    },
+    textOfDownload: {
+        color: '#fff',
+        fontFamily: 'Geologica-Medium',
+        fontSize: 15,
+        marginLeft: 10
+    },
+    buttonInFormSend: {
+        width: '100%',
+        height: '100%'
+    },
+    formForMessagesCOnt: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5490196078)',
+        marginTop: 20,
+        padding: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        borderRadius: 100
+    },
+    inputForMessages: {
+        borderColor: '#fff',
+        width: 240,
+        borderBottomWidth: 1,
+        color: '#fff',
+        fontFamily: 'Geologica-Regular',
+        fontSize: 15
+    },
+    PresableContEventMessage: {
+        width: 35.9,
+        height: 35.9
+    },
+    widthForBoxes: {
+        marginTop: 20,
+        width: 320
     }
 });

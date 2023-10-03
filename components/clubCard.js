@@ -4,19 +4,19 @@ import { styles } from "../style";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function ClubCard({ clubCard, navigation }) {
+    async function nave() {
+        await AsyncStorage.setItem('ClubInUse', clubCard.clubId)
+        await navigation.navigate('Events')
+        // console.log(BannersImg + clubCard.clubBanner)
+        // navigation.navigate('Login')
+    }
 
 
     return (
         <View style={styles.clubCardCont} key={clubCard.clubId}>
             <Pressable
                 style={styles.imgInCardCont}
-                onPress={() => {
-                    AsyncStorage.setItem('ClubInUse', clubCard.clubId)
-                    navigation.navigate('Events')
-                    // console.log(BannersImg + clubCard.clubBanner)
-                    // navigation.navigate('Login')
-                }
-                }>
+                onPress={nave}>
                 <Image style={styles.imgInCard} source={{
                     uri: BannersImg + clubCard.clubBanner
                 }} />

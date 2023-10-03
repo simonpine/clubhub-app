@@ -9,7 +9,7 @@ let socket
 export const ContextClub = createContext()
 
 export const CustomProviderClub = ({ children }) => {
-    const id = AsyncStorage.getItem('ClubInUse')
+    // const id = AsyncStorage.getItem('ClubInUse')
     const [events, setEvents] = useState([])
     const [chat, setChat] = useState([])
 
@@ -18,12 +18,13 @@ export const CustomProviderClub = ({ children }) => {
     const [grades, setGrades] = useState(null)
     const [eventsCal, setEventsCal] = useState([])
     const [polls, setPolls] = useState([])
-    
+
 
 
     useEffect(() => {
         async function setDefault() {
-            // const id  = await AsyncStorage.getItem('ClubInUse')
+            const id = await AsyncStorage.getItem('ClubInUse')
+            // console.log(AsyncStorage.getItem('SavedUser'))
             const res = await getClubId(id)
             if ((res[0]) === undefined) {
                 // window.location.reload(true)
@@ -35,7 +36,16 @@ export const CustomProviderClub = ({ children }) => {
                 await setGrades(res[0].gardes)
                 await setEvents(res[0].events)
                 await setChat(res[0].chat)
-                await setEventsCal(res[0].calendarEvents)
+                const cal = await res[0].calendarEvents.map(ev => {
+                    return {
+                        id: ev.id,
+                        end: new Date(ev.end),
+                        start: new Date(ev.start),
+                        title: ev.title,
+                        desciption: ev.desciption,
+                    }
+                })
+                await setEventsCal(cal)
                 await setPolls((res[0].surveys))
             }
         }
@@ -45,7 +55,7 @@ export const CustomProviderClub = ({ children }) => {
     }, [])
 
     async function deaf() {
-        // const id  = await AsyncStorage.getItem('ClubInUse')
+        const id = await AsyncStorage.getItem('ClubInUse')
         const res = await getClubId(id)
         if ((res[0]) === undefined) {
             // window.location.reload(true)
@@ -56,13 +66,24 @@ export const CustomProviderClub = ({ children }) => {
             await setGrades(res[0].gardes)
             await setEvents(res[0].events)
             await setChat(res[0].chat)
-            await setEventsCal(res[0].calendarEvents)
+            const cal = await res[0].calendarEvents.map(ev => {
+                return {
+                    id: ev.id,
+                    end: new Date(ev.end),
+                    start: new Date(ev.start),
+                    title: ev.title,
+                    desciption: ev.desciption,
+                }
+            })
+            await setEventsCal(cal)
             await setPolls((res[0].surveys))
         }
     }
 
     useEffect(() => {
         socket = io(urlBase)
+        const id = AsyncStorage.getItem('ClubInUse')
+
 
         socket.removeAllListeners()
         socket.emit('joinClub', id)
@@ -78,7 +99,7 @@ export const CustomProviderClub = ({ children }) => {
         return () => {
             socket.disconnect();
         };
-    }, [id])
+    }, [])
 
 
     async function sumbmit(mess, forSocket) {

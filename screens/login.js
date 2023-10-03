@@ -75,7 +75,6 @@ const Login = ({ navigation }) => {
                             placeholder="********"
                         />
                         <Text style={styles.err}>{err}</Text>
-                        <CustomProvider>
                             <ContextUser.Consumer>
                                 {({ deafUs }) => {
                                     async function LogInFunction(evt) {
@@ -120,7 +119,6 @@ const Login = ({ navigation }) => {
                                     )
                                 }}
                             </ContextUser.Consumer>
-                        </CustomProvider>
                         <View style={styles.otherOptionsCont}>
                             <Pressable
                                 onPress={() => navigation.navigate('Recovery')}
