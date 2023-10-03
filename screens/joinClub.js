@@ -92,7 +92,7 @@ const JoinClub = ({ navigation }) => {
                                 {sure &&
                                     <Pressable onPress={() => setSure(false)} style={styles.buttonToFlyBoxes}>
                                         <View style={styles.boxToConfirm}>
-                                            <Pressable  onPress={() => {
+                                            <Pressable onPress={() => {
                                                 setSure(false)
                                                 setMoreInfoClub({})
                                             }}>
@@ -104,7 +104,7 @@ const JoinClub = ({ navigation }) => {
                                             <Text style={styles.textTilteConfirmJoin}>{moreInfoClub.title}</Text>
                                             <Text style={styles.ownerTilteConfirmJoin}>{moreInfoClub.clubOwner}</Text>
                                             <Text style={styles.descriptionConfirmJoin}>{moreInfoClub.description}</Text>
-                                            <Pressable onPress={()=> serverChange(moreInfoClub)} style={styles.joinButton}>
+                                            <Pressable onPress={() => serverChange(moreInfoClub)} style={styles.joinButton}>
                                                 <Text style={styles.textInButton}>Join</Text>
                                             </Pressable>
                                         </View>
@@ -112,16 +112,14 @@ const JoinClub = ({ navigation }) => {
                                 }
                                 <Layout>
                                     <View style={styles.flyButtonsCont}>
-                                        <Pressable>
-                                            {/* <Text style={styles.textInFlyButtons}>Log out</Text> */}
-                                        </Pressable>
+                                        <Text style={styles.textInButton}></Text>
                                         <Pressable style={styles.flyButtons} onPress={retur}>
                                             <Text style={styles.textInFlyButtons}>Return</Text>
                                         </Pressable>
-
                                     </View>
-                                    <ScrollView >
+                                    <ScrollView style={styles.joinCont} >
                                         <View style={styles.inptuContJoin}>
+                                            <Text style={styles.textTilte}>Join a club</Text>
                                             <Text style={styles.inputDescrip}>Search by code:</Text>
                                             <TextInput value={codeRef} onChangeText={setCodeRef} placeholder="stglrcb9ob" placeholderTextColor='#C7C7CD' style={styles.input}></TextInput>
                                             <Text style={styles.err}>{err}</Text>
@@ -132,7 +130,7 @@ const JoinClub = ({ navigation }) => {
                                         {clubList.map(item => {
                                             return !userClubs.some(a => a.clubId === item.id) && (
                                                 // <ClubCardJoin key={item.id} jo={join} item={item} /
-                                                <View style={styles.cardJoin}>
+                                                <View key={item.id} style={styles.cardJoin}>
                                                     <Image style={styles.imageInClubCardJoin} source={{ uri: BannersImg + item.clubBanner }} />
                                                     <View style={styles.textsContsJoin}>
                                                         <Text style={styles.titleJoinCard}>{item.title}</Text>

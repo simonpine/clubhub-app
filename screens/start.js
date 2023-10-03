@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View, Image, Text, TextInput, Pressable } from "react-native"
+import { StyleSheet, Image, Text, Pressable } from "react-native"
 import Layout from "../components/layout";
 import logo from '../assets/Colibri.png'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,14 +12,14 @@ const Start = ({ navigation }) => {
             navigation.navigate('Home')
             console.log(value)
         }
-        else{
+        else {
             navigation.navigate('Login')
         }
     }
-    setTimeout(()=> {
+    setTimeout(() => {
         load()
-     }
-     ,500)
+    }
+        , 500)
 
     return (
         <Layout>

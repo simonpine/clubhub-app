@@ -10,6 +10,8 @@ import Recovery from './screens/recovery';
 import Home from './screens/home';
 import JoinClub from './screens/joinClub';
 import UserSettings from './screens/userSettings';
+import CreateClub from './screens/createClub';
+import Events from './screens/events';
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -41,6 +43,8 @@ export default function App() {
             <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
             <Stack.Screen options={{ headerShown: false }} name="UserSettings" component={UserSettings} />
             <Stack.Screen options={{ headerShown: false }} name="JoinClub" component={JoinClub} />
+            <Stack.Screen options={{ headerShown: false }} name="CreateClub" component={CreateClub} />
+            <Stack.Screen options={{ headerShown: false }} name="Events" component={Events} />
 
 
           </Stack.Navigator>

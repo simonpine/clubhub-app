@@ -101,6 +101,11 @@ export const styles = StyleSheet.create({
         marginTop: 55,
         marginBottom: 120
     },
+    all2: {
+        paddingHorizontal: '5%',
+        marginTop: 20,
+        marginBottom: 120
+    },
     clubListCont: {
         width: '90%',
         left: '5%',
@@ -184,6 +189,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         // alignContent: 'space-between',
         justifyContent: 'space-between',
+        alignItems: 'center'
 
     },
     textInFlyButtons: {
@@ -307,7 +313,7 @@ export const styles = StyleSheet.create({
         // backgroundColor: 'white',
         width: '90%',
         left: '5%',
-        marginTop: 50
+        marginTop: 30
     },
     imageInClubCardJoin: {
         width: 50,
@@ -384,6 +390,40 @@ export const styles = StyleSheet.create({
         paddingVertical: 7.5,
         borderRadius: 100,
         width: 75,
-
+    },
+    joinCont: {
+        marginTop: 20
+    },
+    imageUploader: {
+        borderColor: '#d6ad7b',
+        width: '100%',
+        height: 300,
+        borderWidth: 1,
+        marginBottom: 20,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    upImga: {
+        width: 100,
+        height: 70
+    },
+    clubBanner: {
+        width: '100%',
+        height: 180,
+        borderRadius: 20,
+        overflow: 'hidden'
+    },
+    clubBannerImage: {
+        width: '100%',
+        height: '100%',
+        // borderRadius: 20
+        position: 'absolute',
+    },
+    textInClubBanner: {
+        color: '#fff',
+        fontSize: 30,
+        fontFamily: 'Geologica-Bold',
+        margin: 10
     }
 });

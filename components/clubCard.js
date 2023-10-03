@@ -1,6 +1,7 @@
 import { ActivityIndicator, StyleSheet, View, Image, Text, TextInput, Pressable } from "react-native"
 import { BannersImg } from "../api";
 import { styles } from "../style";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function ClubCard({ clubCard, navigation }) {
 
@@ -9,11 +10,13 @@ function ClubCard({ clubCard, navigation }) {
         <View style={styles.clubCardCont} key={clubCard.clubId}>
             <Pressable
                 style={styles.imgInCardCont}
-                onPress={() =>
-                    // clubCard.navigation.navigate('Login')
-                    console.log(BannersImg + clubCard.clubBanner)
+                onPress={() => {
+                    AsyncStorage.setItem('ClubInUse', clubCard.clubId)
+                    navigation.navigate('Events')
+                    // console.log(BannersImg + clubCard.clubBanner)
+                    // navigation.navigate('Login')
                 }
-            >
+                }>
                 <Image style={styles.imgInCard} source={{
                     uri: BannersImg + clubCard.clubBanner
                 }} />

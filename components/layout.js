@@ -8,7 +8,7 @@ function Layout({ children, t, n }) {
       <View style={styles.container}>
 
         <StatusBar style="light" />
-        <Image style={styles.bg} blurRadius={170} source={bg} />
+        <Image style={styles.bg} blurRadius={70} source={bg} />
         {t === true &&
           <Pressable style={styles.returnCont} onPress={() => n.goBack()}>
             <Text style={styles.returnTexr}>Return</Text>

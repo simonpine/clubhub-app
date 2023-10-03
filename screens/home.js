@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View, Image, Text, Pressable, ScrollView, RefreshControl, Animated } from "react-native"
+import { ActivityIndicator, StyleSheet, View, Image, Text, Pressable, ScrollView, RefreshControl } from "react-native"
 import Layout from "../components/layout";
 import { styles } from "../style";
 import ClubCard from "../components/clubCard";
@@ -41,7 +41,7 @@ const Home = ({ navigation }) => {
                                             <Pressable onPress={() => navigation.navigate('JoinClub')}>
                                                 <Text style={styles.clubItercactions}>Join club</Text>
                                             </Pressable>
-                                            <Pressable>
+                                            <Pressable onPress={()=> navigation.navigate('CreateClub')}>
                                                 <Text style={styles.clubItercactions}>Create club</Text>
                                             </Pressable>
                                         </View>
@@ -93,7 +93,7 @@ const Home = ({ navigation }) => {
                                                     <Pressable onPress={() => navigation.navigate('JoinClub')} style={styles.flyButtons}>
                                                         <Text style={styles.textInFlyButtons}>Join club</Text>
                                                     </Pressable>
-                                                    <Pressable style={styles.flyButtons}>
+                                                    <Pressable onPress={()=> navigation.navigate('CreateClub')} style={styles.flyButtons}>
                                                         <Text style={styles.textInFlyButtons}>Create club</Text>
                                                     </Pressable>
                                                 </View>

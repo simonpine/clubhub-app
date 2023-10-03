@@ -1,15 +1,15 @@
 import React, { createContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { getClubId } from "../api";
 import io from 'socket.io-client'
 import { urlBase } from "../api";
 import { sendMsgEvent, sendMsgChat } from "../api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 let socket
 
 export const ContextClub = createContext()
 
 export const CustomProviderClub = ({ children }) => {
-    const { id } = useParams()
+    const id = AsyncStorage.getItem('ClubInUse')
     const [events, setEvents] = useState([])
     const [chat, setChat] = useState([])
 
@@ -18,13 +18,16 @@ export const CustomProviderClub = ({ children }) => {
     const [grades, setGrades] = useState(null)
     const [eventsCal, setEventsCal] = useState([])
     const [polls, setPolls] = useState([])
+    
 
 
     useEffect(() => {
         async function setDefault() {
+            // const id  = await AsyncStorage.getItem('ClubInUse')
             const res = await getClubId(id)
             if ((res[0]) === undefined) {
-                window.location.reload(true)
+                // window.location.reload(true)
+                console.log(res, id)
 
             }
             else {
@@ -39,12 +42,13 @@ export const CustomProviderClub = ({ children }) => {
         // console.log(sucedio)
         setDefault()
 
-    }, [id])
+    }, [])
 
     async function deaf() {
+        // const id  = await AsyncStorage.getItem('ClubInUse')
         const res = await getClubId(id)
         if ((res[0]) === undefined) {
-            window.location.reload(true)
+            // window.location.reload(true)
 
         }
         else {
@@ -59,8 +63,8 @@ export const CustomProviderClub = ({ children }) => {
 
     useEffect(() => {
         socket = io(urlBase)
-        socket.removeAllListeners()
 
+        socket.removeAllListeners()
         socket.emit('joinClub', id)
 
         socket.on('emitMessageEvent', mess => {
