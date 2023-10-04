@@ -2,7 +2,7 @@ import { ActivityIndicator, StyleSheet, View, Image, Text, Pressable, ScrollView
 import Layout from "../components/layout";
 import { styles } from "../style";
 import ClubCard from "../components/clubCard";
-import { ContextUser, CustomProvider } from '../context/userContext'
+import { ContextUser } from '../context/userContext'
 import { useState, useEffect } from "react";
 import { usersImg } from "../api";
 import userImg from '../assets/user.png'

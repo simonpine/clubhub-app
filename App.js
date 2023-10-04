@@ -15,6 +15,8 @@ import Events from './screens/events';
 import CalendarClub from './screens/calendar';
 import { CustomProvider } from './context/userContext';
 import { CustomProviderClub } from './context/clubContext';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 const getFonts = () => {
   return Font.loadAsync({
     'Geologica-Regular': require('./assets/fonts/Geologica-Regular.ttf'),
@@ -25,11 +27,19 @@ const getFonts = () => {
   })
 }
 
+const Tab = createBottomTabNavigator();
 
+export const ClubsContNav = () => {
+  return (
+    <Tab.Navigator initialRouteName="Events">
+      <Tab.Screen options={{ headerShown: false }} name="Events" component={Events} />
+      <Tab.Screen options={{ headerShown: false }} name="Calendar" component={CalendarClub} />
+    </Tab.Navigator>
+  );
+}
 
 const Stack = createNativeStackNavigator();
 export default function App() {
-  const [recoveryName, setRecoveryName] = useState('')
   const [FonstLoaded, setFontsLoaded] = useState(false);
   if (FonstLoaded) {
     return (
@@ -37,9 +47,7 @@ export default function App() {
       <CustomProvider>
         <CustomProviderClub>
           <NavigationContainer>
-            <Stack.Navigator
-              initialRouteName="Start"
-            >
+            <Stack.Navigator initialRouteName="Start">
               <Stack.Screen options={{ headerShown: false }} name="Start" component={Start} />
               <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
               <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
@@ -48,8 +56,15 @@ export default function App() {
               <Stack.Screen options={{ headerShown: false }} name="UserSettings" component={UserSettings} />
               <Stack.Screen options={{ headerShown: false }} name="JoinClub" component={JoinClub} />
               <Stack.Screen options={{ headerShown: false }} name="CreateClub" component={CreateClub} />
-              <Stack.Screen options={{ headerShown: false }} name="Events" component={Events} />
-              <Stack.Screen options={{ headerShown: false }} name="Calendar" component={CalendarClub} />
+              {/* <Stack.Group >
+                <Stack.Screen name="Events" component={Events} />
+                <Stack.Screen name="Calendar" component={CalendarClub} />
+              </Stack.Group> */}
+              <Stack.Screen
+                name="ClubsContNav"
+                component={ClubsContNav}
+                options={{ headerShown: false }}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </CustomProviderClub>

@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         left: '5%',
         marginBottom: 200,
-        marginTop: 65
+        marginTop: 70
     },
     clubCardCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
@@ -393,8 +393,8 @@ export const styles = StyleSheet.create({
         marginTop: 10
     },
     closeButton: {
-        width: 40,
-        height: 40,
+        width: 35,
+        height: 35,
     },
     textTilteConfirmJoin: {
         color: '#fff',
@@ -542,5 +542,16 @@ export const styles = StyleSheet.create({
     widthForBoxes: {
         marginTop: 20,
         width: 320
+    },
+    titleForCalendar: {
+        color: '#fff',
+        fontFamily: 'Geologica-Bold',
+        fontSize: 25,
+        marginTop: -10
+    },
+    descripForCalendar: {
+        color: '#fff',
+        fontFamily: 'Geologica-Thin',
+        fontSize: 17,
     }
 });

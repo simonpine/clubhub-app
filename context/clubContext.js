@@ -42,7 +42,7 @@ export const CustomProviderClub = ({ children }) => {
                         end: new Date(ev.end),
                         start: new Date(ev.start),
                         title: ev.title,
-                        desciption: ev.desciption,
+                        description: ev.description,
                     }
                 })
                 await setEventsCal(cal)
@@ -72,7 +72,7 @@ export const CustomProviderClub = ({ children }) => {
                     end: new Date(ev.end),
                     start: new Date(ev.start),
                     title: ev.title,
-                    desciption: ev.desciption,
+                    description: ev.description,
                 }
             })
             await setEventsCal(cal)

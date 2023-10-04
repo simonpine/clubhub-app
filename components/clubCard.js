@@ -2,25 +2,33 @@ import { ActivityIndicator, StyleSheet, View, Image, Text, TextInput, Pressable 
 import { BannersImg } from "../api";
 import { styles } from "../style";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { ContextClub } from "../context/clubContext";
 function ClubCard({ clubCard, navigation }) {
-    async function nave() {
-        await AsyncStorage.setItem('ClubInUse', clubCard.clubId)
-        await navigation.navigate('Events')
-        // console.log(BannersImg + clubCard.clubBanner)
-        // navigation.navigate('Login')
-    }
+
 
 
     return (
         <View style={styles.clubCardCont} key={clubCard.clubId}>
-            <Pressable
-                style={styles.imgInCardCont}
-                onPress={nave}>
-                <Image style={styles.imgInCard} source={{
-                    uri: BannersImg + clubCard.clubBanner
-                }} />
-            </Pressable>
+            <ContextClub.Consumer>
+                {({ deaf }) => {
+                    async function nave() {
+                        await AsyncStorage.setItem('ClubInUse', clubCard.clubId)
+                        await deaf()
+                        await navigation.navigate('ClubsContNav')
+                        // console.log(BannersImg + clubCard.clubBanner)
+                        // navigation.navigate('Login')
+                    }
+                    return (
+                        <Pressable
+                            style={styles.imgInCardCont}
+                            onPress={nave}>
+                            <Image style={styles.imgInCard} source={{
+                                uri: BannersImg + clubCard.clubBanner
+                            }} />
+                        </Pressable>
+                    )
+                }}
+            </ContextClub.Consumer>
             <View className="textInCard">
                 <View>
                     <Text style={styles.blubCardTitle}>{clubCard.clubTitle}</Text>
