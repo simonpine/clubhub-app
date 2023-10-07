@@ -16,6 +16,7 @@ import CalendarClub from './screens/calendar';
 import { CustomProvider } from './context/userContext';
 import { CustomProviderClub } from './context/clubContext';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Chat from './screens/chat';
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -31,9 +32,16 @@ const Tab = createBottomTabNavigator();
 
 export const ClubsContNav = () => {
   return (
-    <Tab.Navigator initialRouteName="Events">
+    <Tab.Navigator screenOptions={{
+      tabBarStyle: {
+        // backgroundColor: '#0000ff',
+        // height: 100,
+        display: 'none'
+      },
+    }} initialRouteName="Events">
       <Tab.Screen options={{ headerShown: false }} name="Events" component={Events} />
       <Tab.Screen options={{ headerShown: false }} name="Calendar" component={CalendarClub} />
+      <Tab.Screen options={{ headerShown: false }} name="Chat" component={Chat} />
     </Tab.Navigator>
   );
 }

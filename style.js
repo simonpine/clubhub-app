@@ -114,7 +114,7 @@ export const styles = StyleSheet.create({
     EventsCont: {
         width: '90%',
         left: '5%',
-        marginBottom: 200,
+        marginBottom: 220,
         marginTop: 70
     },
     clubCardCont: {
@@ -166,6 +166,8 @@ export const styles = StyleSheet.create({
         width: 30,
         height: 30,
         overflow: 'visible',
+        alignItems: 'center',
+        // justifyContent: 'center',
     },
     imgForNav: {
         width: '90%',
@@ -175,17 +177,26 @@ export const styles = StyleSheet.create({
     },
     buttonsAllTimeCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
-        width: '90%',
-        left: '5%',
+        width: '100%',
+        // left: '5%',
         position: 'absolute',
-        bottom: 130,
+        bottom: 100,
+        height: 100,
+
         zIndex: 100,
-        padding: 10,
-        borderRadius: 100,
+        padding: 25,
+        paddingBottom: 50,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    textForNavButtons: {
+        color: '#fff',
+        fontFamily: 'Geologica-Thin',
+        fontSize: 9,
+        marginTop: 10
+
     },
     buttonsAllTimeCont2: {
         backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
@@ -472,7 +483,7 @@ export const styles = StyleSheet.create({
     textMessage: {
         color: '#fff',
         fontSize: 15,
-        fontFamily: 'Geologica-Regular',
+        fontFamily: 'Geologica-Light',
     },
     imgUploadedByUser: {
         width: '100%',
@@ -553,5 +564,47 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Geologica-Thin',
         fontSize: 17,
+    },
+    // rgba(65, 78, 90, 0.5568627451)
+    realOtherMessage: {
+        backgroundColor: 'rgba(65, 78, 90, 0.5568627451)',
+        borderRadius: 15,
+        borderTopEndRadius: 1,
+        padding: 10,
+        // maxWidth: 300,
+        marginLeft: 10
+    },
+    ownMessage: {
+        backgroundColor: 'rgba(0, 0, 0, 0.490196078)',
+        borderRadius: 15,
+        borderTopStartRadius: 1,
+        padding: 10,
+        marginRight: 10
+    },
+    chatCont: {
+        width: '90%',
+        left: '5%',
+        marginBottom: 280,
+        marginTop: 70,
+        flexDirection: 'column-reverse'
+        
+    },
+    userImageInChat: {
+        width: 40,
+        height: 40,
+        // backgroundColor: 'white',
+        borderRadius: 100
+    },
+    allMesCont: {
+        marginBottom: 20,
+        flexDirection: 'row-reverse',
+        alignSelf: 'flex-end',
+        maxWidth: 270,
+    },
+    allMesCont2: {
+        marginBottom: 20,
+        flexDirection: 'row',
+        alignSelf: 'flex-start',
+        maxWidth: 270,
     }
 });

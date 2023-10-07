@@ -27,23 +27,29 @@ function ClubNav({ children, n, current, sett }) {
             <View style={styles.buttonsAllTimeCont}>
                 <Pressable onPress={() => n.navigate('Events')} style={styles.buttonOfNav}>
                     <Image style={styles.imgForNav} source={current === 5 ? surveysFocus : surveys} />
+                    <Text style={styles.textForNavButtons}>Surveys</Text>
                 </Pressable>
                 <Pressable onPress={() => n.navigate('Events')} style={styles.buttonOfNav}>
                     <Image style={styles.imgForNav} source={current === 5 ? gradesFocus : grades} />
+                    <Text style={styles.textForNavButtons}>Grades</Text>
                 </Pressable>
                 <Pressable onPress={()=> n.navigate('Events')} style={styles.buttonOfNav}>
                     <Image style={styles.imgForNav} source={current === 1 ? flameFocus : flame} />
+                    <Text style={styles.textForNavButtons}>Events</Text>
                 </Pressable>
                 <Pressable onPress={()=> n.navigate('Calendar')} style={styles.buttonOfNav}>
                     <Image style={styles.imgForNav} source={current === 2 ? calendarFocus : calendar} />
+                    <Text style={styles.textForNavButtons}>Schedule</Text>
                 </Pressable>
-                <Pressable onPress={() => n.navigate('Events')} style={styles.buttonOfNav}>
-                    <Image style={styles.imgForNav} source={current === 5 ? chatFocus : chat} />
+                <Pressable onPress={() => n.navigate('Chat')} style={styles.buttonOfNav}>
+                    <Image style={styles.imgForNav} source={current === 3 ? chatFocus : chat} />
+                    <Text style={styles.textForNavButtons}>Chat</Text>
                 </Pressable>
 
                 {sett &&
                     <Pressable onPress={() => n.navigate('Events')} style={styles.buttonOfNav}>
                         <Image style={styles.imgForNav} source={current === 5 ? settingsFocus : settings} />
+                        <Text style={styles.textForNavButtons}>Settings</Text>
                     </Pressable>
                 }
 
