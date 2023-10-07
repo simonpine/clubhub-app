@@ -489,7 +489,13 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: 150,
         borderRadius: 10,
-        marginTop: 10
+        marginTop: 10,
+    },
+    imgUploadedByUser2: {
+        width: 230,
+        height: 200,
+        borderRadius: 10,
+        marginTop: 10,
     },
     returnCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.900196078)',
@@ -565,46 +571,59 @@ export const styles = StyleSheet.create({
         fontFamily: 'Geologica-Thin',
         fontSize: 17,
     },
-    // rgba(65, 78, 90, 0.5568627451)
+    // 
     realOtherMessage: {
-        backgroundColor: 'rgba(65, 78, 90, 0.5568627451)',
-        borderRadius: 15,
-        borderTopEndRadius: 1,
-        padding: 10,
-        // maxWidth: 300,
-        marginLeft: 10
-    },
-    ownMessage: {
         backgroundColor: 'rgba(0, 0, 0, 0.490196078)',
         borderRadius: 15,
         borderTopStartRadius: 1,
         padding: 10,
-        marginRight: 10
+        // maxWidth: 300,
+        marginLeft: 10,
+    },
+    ownMessage: {
+        backgroundColor: 'rgba(65, 78, 90, 0.5568627451)',
+        borderRadius: 15,
+        borderTopEndRadius: 1,
+        padding: 10,
+        marginRight: 10,
     },
     chatCont: {
         width: '90%',
         left: '5%',
-        marginBottom: 280,
+        marginBottom: 260,
         marginTop: 70,
-        flexDirection: 'column-reverse'
-        
+        flexDirection: 'column-reverse',
     },
     userImageInChat: {
         width: 40,
         height: 40,
-        // backgroundColor: 'white',
         borderRadius: 100
     },
     allMesCont: {
         marginBottom: 20,
         flexDirection: 'row-reverse',
         alignSelf: 'flex-end',
-        maxWidth: 270,
+        maxWidth: 260,
+        
     },
     allMesCont2: {
         marginBottom: 20,
         flexDirection: 'row',
         alignSelf: 'flex-start',
-        maxWidth: 270,
+        maxWidth: 260,
+    },
+    formForMessagesContChat: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8990196078)',
+        marginTop: 20,
+        padding: 10,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        // borderRadius: 100,
+        position: 'absolute',
+        zIndex: 100,
+        width: '100%',
+        // left: '5%'
+
+        bottom: 200        
     }
 });
