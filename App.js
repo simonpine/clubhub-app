@@ -18,6 +18,7 @@ import { CustomProviderClub } from './context/clubContext';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Chat from './screens/chat';
 import Grades from './screens/grades';
+import Surveys from './screens/surveys';
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -44,6 +45,7 @@ export const ClubsContNav = () => {
       <Tab.Screen options={{ headerShown: false }} name="Calendar" component={CalendarClub} />
       <Tab.Screen options={{ headerShown: false }} name="Chat" component={Chat} />
       <Tab.Screen options={{ headerShown: false }} name="Grades" component={Grades} />
+      <Tab.Screen options={{ headerShown: false }} name="Surveys" component={Surveys} />
     </Tab.Navigator>
   );
 }

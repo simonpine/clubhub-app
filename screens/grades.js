@@ -38,26 +38,21 @@ const Grades = ({ navigation }) => {
                                                         <DataTable.Header style={styles.tableHeader}>
                                                             <DataTable.Title ></DataTable.Title>
                                                             {grades.students.map(item => {
-                                                                return (
-                                                                    <>
-                                                                        {item.studentName === user.userName || user.userName === club.clubOwner ? <DataTable.Title key={item.studentName} ><Text style={styles.HeaderTitlesGrades}>{item.studentName}</Text></DataTable.Title> : <></>}
-                                                                    </>
+                                                                return item.studentName === user.userName || user.userName === club.clubOwner && (
+                                                                    <DataTable.Title key={item.studentName} ><Text style={styles.HeaderTitlesGrades}>{item.studentName}</Text></DataTable.Title>
                                                                 )
                                                             })
                                                             }
                                                         </DataTable.Header>
                                                         {grades.grades.map((gra, index) => {
                                                             return (
-                                                                <DataTable.Row >
+                                                                <DataTable.Row key={index}>
                                                                     <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>{gra}</Text></DataTable.Cell>
                                                                     {grades.students.map(stu => {
-                                                                        return (
-                                                                            <>
-                                                                                {stu.studentName === user.userName || user.userName === club.clubOwner ? <DataTable.Cell><Text style={styles.gradeInTable}>     {stu.gardes[index]}</Text></DataTable.Cell> : <></>}
-                                                                            </>
+                                                                        return stu.studentName === user.userName || user.userName === club.clubOwner && (
+                                                                            <DataTable.Cell key={stu.studentName + index}><Text style={styles.gradeInTable}>     {stu.gardes[index]}</Text></DataTable.Cell>
                                                                         )
                                                                     })
-
                                                                     }
                                                                 </DataTable.Row>
                                                             )
@@ -66,21 +61,12 @@ const Grades = ({ navigation }) => {
                                                         <DataTable.Row >
                                                             <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>Totla: </Text></DataTable.Cell>
                                                             {grades.students.map(stu => {
-                                                                return (
-                                                                    <>
-                                                                        {stu.studentName === user.userName || user.userName === club.clubOwner ? <DataTable.Cell><Text style={styles.gradeInTable}>  {stu.total}</Text></DataTable.Cell> : <></>}
-                                                                    </>
+                                                                return stu.studentName === user.userName || user.userName === club.clubOwner && (
+                                                                    <DataTable.Cell key={stu.studentName}><Text style={styles.gradeInTable}>  {stu.total}</Text></DataTable.Cell>
                                                                 )
                                                             })
-
                                                             }
                                                         </DataTable.Row>
-
-                                                        {/* <DataTable.Row>
-                                                            <DataTable.Cell>Krishna</DataTable.Cell>
-                                                            <DataTable.Cell>Uttapam</DataTable.Cell>
-                                                            <DataTable.Cell>26</DataTable.Cell>
-                                                        </DataTable.Row> */}
                                                     </DataTable>
                                                 </View>
                                             </ScrollView>
