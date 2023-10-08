@@ -23,7 +23,6 @@ export const styles = StyleSheet.create({
         marginTop: '50%'
     },
     disabled: {
-
         backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
         alignSelf: 'flex-start',
         paddingHorizontal: 20,
@@ -40,7 +39,6 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 7.5,
         borderRadius: 100,
-        // opacity: 0.5,
         marginBottom: 20,
         width: '100%',
         alignItems: 'center'
@@ -49,7 +47,6 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Geologica-Regular',
         fontSize: 15,
-
     },
     dropdown4DropdownStyle: {
         backgroundColor: 'rgba(0, 0, 0, 0.8)'
@@ -124,7 +121,6 @@ export const styles = StyleSheet.create({
         borderRadius: 20
     },
     pInCard: {
-        // marginTop: 10,
         color: '#fff',
         fontFamily: 'Geologica-Thin',
         fontSize: 15,
@@ -133,7 +129,6 @@ export const styles = StyleSheet.create({
     imgInCardCont: {
         width: '100%',
         height: 140,
-        // backgroundColor: 'white',
         borderRadius: 15,
         marginBottom: 10,
         overflow: 'hidden'
@@ -151,11 +146,8 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         width: '100%',
         height: '100%',
-        // left: '5%',
-        // top: '5%'
     },
     buttonOfUser: {
-        // backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
         width: 40,
         height: 40,
         borderRadius: 100,
@@ -167,7 +159,6 @@ export const styles = StyleSheet.create({
         height: 30,
         overflow: 'visible',
         alignItems: 'center',
-        // justifyContent: 'center',
     },
     imgForNav: {
         width: '90%',
@@ -178,11 +169,9 @@ export const styles = StyleSheet.create({
     buttonsAllTimeCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
         width: '100%',
-        // left: '5%',
         position: 'absolute',
         bottom: 100,
         height: 100,
-
         zIndex: 100,
         padding: 25,
         paddingBottom: 50,
@@ -196,7 +185,6 @@ export const styles = StyleSheet.create({
         fontFamily: 'Geologica-Thin',
         fontSize: 9,
         marginTop: 10
-
     },
     buttonsAllTimeCont2: {
         backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
@@ -219,17 +207,14 @@ export const styles = StyleSheet.create({
         borderRadius: 100
     },
     flyButtonsCont: {
-        // backgroundColor: 'rgba(0, 0, 0, 0.7490196078)',
         width: '90%',
         left: '5%',
         position: 'absolute',
         top: 0,
         zIndex: 100,
-        // padding: 10,
         borderRadius: 100,
         display: 'flex',
         flexDirection: 'row',
-        // alignContent: 'space-between',
         justifyContent: 'space-between',
         alignItems: 'center'
 
@@ -249,13 +234,10 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     userImageInSettingsCont: {
-
         width: 90,
         height: 90,
         backgroundColor: 'rgba(0, 0, 0, 0.490196078)',
-        // overflow: 'hidden',
         borderRadius: 100,
-        // alignSelf: 'center',
         marginBottom: 20
     },
     buttonToFlyBoxes: {
@@ -268,7 +250,6 @@ export const styles = StyleSheet.create({
         justifyContent: "center"
     },
     boxToConfirm: {
-
         backgroundColor: 'rgba(0, 0, 0, 0.960196078)',
         padding: 15,
         borderRadius: 20
@@ -278,7 +259,6 @@ export const styles = StyleSheet.create({
         fontFamily: 'Geologica-Medium',
         fontSize: 20,
         marginBottom: 20,
-
     },
     ConfirmButtons: {
         backgroundColor: 'rgba(65, 78, 90, 0.5568627451)',
@@ -343,7 +323,6 @@ export const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        // width: '100%',
         width: 270,
         marginTop: 20
     },
@@ -352,7 +331,6 @@ export const styles = StyleSheet.create({
         width: '100%'
     },
     inptuContJoin: {
-        // backgroundColor: 'white',
         width: '90%',
         left: '5%',
         marginTop: 30
@@ -382,9 +360,7 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 15,
         fontFamily: 'Geologica-Thin',
-        // width: '100%',
         position: 'relative',
-        // height: 100,
         marginVertical: 10,
         marginBottom: 20
     },
@@ -459,7 +435,6 @@ export const styles = StyleSheet.create({
     clubBannerImage: {
         width: '100%',
         height: '100%',
-        // borderRadius: 20
         position: 'absolute',
     },
     textInClubBanner: {
@@ -500,13 +475,10 @@ export const styles = StyleSheet.create({
     returnCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.900196078)',
         padding: 15,
-        // paddingVertical: 7.5,
         borderRadius: 100,
-        // marginTop: 20
         position: 'absolute',
         top: 0,
         left: '5%',
-        // width: 100,
         zIndex: 1000
     },
     imageForNav: {
@@ -577,7 +549,6 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
         borderTopStartRadius: 1,
         padding: 10,
-        // maxWidth: 300,
         marginLeft: 10,
     },
     ownMessage: {
@@ -604,7 +575,6 @@ export const styles = StyleSheet.create({
         flexDirection: 'row-reverse',
         alignSelf: 'flex-end',
         maxWidth: 260,
-        
     },
     allMesCont2: {
         marginBottom: 20,
@@ -618,12 +588,29 @@ export const styles = StyleSheet.create({
         padding: 10,
         flexDirection: "row",
         justifyContent: "space-between",
-        // borderRadius: 100,
         position: 'absolute',
         zIndex: 100,
         width: '100%',
-        // left: '5%'
+        bottom: 200
+    },
+    tableHeader: {
+        backgroundColor: 'rgba(214, 173, 123, 0.2882352941)', 
+        borderWidth: 0
+    },
+    table: {
+        backgroundColor: 'rgba(0, 0, 0, 0.60196078)',
+        borderRadius: 15,
+        overflow: 'hidden',
 
-        bottom: 200        
+    },
+    HeaderTitlesGrades: {
+        color: '#fff',
+        fontSize: 15,
+        fontFamily: 'Geologica-Bold'
+    },
+    gradeInTable: {
+        color: '#fff',
+        fontFamily: 'Geologica-Thin',
+        // marginLeft:
     }
 });

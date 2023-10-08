@@ -29,8 +29,8 @@ function ClubNav({ children, n, current, sett }) {
                     <Image style={styles.imgForNav} source={current === 5 ? surveysFocus : surveys} />
                     <Text style={styles.textForNavButtons}>Surveys</Text>
                 </Pressable>
-                <Pressable onPress={() => n.navigate('Events')} style={styles.buttonOfNav}>
-                    <Image style={styles.imgForNav} source={current === 5 ? gradesFocus : grades} />
+                <Pressable onPress={() => n.navigate('Grades')} style={styles.buttonOfNav}>
+                    <Image style={styles.imgForNav} source={current === 4 ? gradesFocus : grades} />
                     <Text style={styles.textForNavButtons}>Grades</Text>
                 </Pressable>
                 <Pressable onPress={()=> n.navigate('Events')} style={styles.buttonOfNav}>
@@ -48,7 +48,7 @@ function ClubNav({ children, n, current, sett }) {
 
                 {sett &&
                     <Pressable onPress={() => n.navigate('Events')} style={styles.buttonOfNav}>
-                        <Image style={styles.imgForNav} source={current === 5 ? settingsFocus : settings} />
+                        <Image style={styles.imgForNav} source={current === 6 ? settingsFocus : settings} />
                         <Text style={styles.textForNavButtons}>Settings</Text>
                     </Pressable>
                 }
