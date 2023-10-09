@@ -33,6 +33,7 @@
     "react-native-md5": "^1.0.0",
     "react-native-paper": "^5.10.6",
     "react-native-quick-md5": "^3.0.5",
+    "react-native-radio-buttons-group": "^3.0.5",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
     "react-native-select-dropdown": "^3.4.0",

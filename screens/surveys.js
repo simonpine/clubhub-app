@@ -5,10 +5,11 @@ import { ContextUser } from '../context/userContext'
 import { ContextClub } from "../context/clubContext";
 import { useState } from "react";
 import { addRes, addSurveyToServer, surveysBanner, deleteSurvey } from "../api"
-
+import plusImg from '../assets/plus.png'
 import ClubNav from "../components/clubNav";
 import file from '../assets/document.png'
 import closeImage from '../assets/close.png'
+import empty from '../assets/empty.png'
 
 import send from '../assets/send.png'
 import upload from '../assets/upload.png'
@@ -16,11 +17,9 @@ import userPhoto from '../assets/user.png'
 
 const Surveys = ({ navigation }) => {
     const [refreshing, setRefreshing] = useState(false);
-    const [message, setMessage] = useState('')
-    const [err, setErr] = useState('')
     const [selectedImage, setSelectedImage] = useState(null);
     const [sure, setSure] = useState(false)
-
+    const [err, setErr] = useState('')
 
 
 
@@ -33,6 +32,7 @@ const Surveys = ({ navigation }) => {
     }
     const formData = new FormData()
     const [res, setRes] = useState([])
+    const [titleRef, setTitleRef] = useState('')
     const [currentAnswering, setCurrentAnswering] = useState(null)
     const [currentSurvey, setCurrentSurvey] = useState([
         {
@@ -176,7 +176,7 @@ const Surveys = ({ navigation }) => {
             {({ user }) => {
                 return (
                     <ContextClub.Consumer>
-                        {({ club, deaf, chat, sumbmitChat }) => {
+                        {({ club, deaf, polls }) => {
                             const onRefresh = () => {
                                 setRefreshing(true);
                                 setTimeout(() => {
@@ -263,7 +263,7 @@ const Surveys = ({ navigation }) => {
                                     clubId: club.id,
                                     pollId: currentAnswering.id
                                 }))
-                                
+
                                 await setCurrentAnswering(null)
                                 await setRes([])
                                 await deaf()
@@ -281,7 +281,25 @@ const Surveys = ({ navigation }) => {
                                                     <Image style={styles.closeButton} source={closeImage} />
                                                 </Pressable>
                                                 <View style={styles.widthForBoxes}>
-
+                                                    <Text style={styles.inputDescrip}>Survey title:</Text>
+                                                    <TextInput
+                                                        placeholderTextColor='#C7C7CD'
+                                                        style={styles.input}
+                                                        placeholder="Most popular pet"
+                                                        onChangeText={setTitleRef}
+                                                        secureTextEntry={false}
+                                                    />
+                                                    <View style={styles.bannerInput}>
+                                                        <Text style={styles.textInFlyButtons}>Select a banner</Text>
+                                                    </View>
+                                                    {currentSurvey.map((item, index) => {
+                                                        return (
+                                                            <View key={index}>
+                                                                
+                                                            </View>
+                                                        )
+                                                    })
+                                                    }
                                                 </View>
                                             </View>
                                         </Pressable>
@@ -295,11 +313,55 @@ const Surveys = ({ navigation }) => {
                                                 }
                                             >
                                                 <View style={styles.chatCont}>
-
+                                                    {polls.length !== 0 ?
+                                                        <>
+                                                            {club.clubOwner === user.userName &&
+                                                                <Pressable onPress={() => setSure(true)} style={styles.plusCont}>
+                                                                    <Text></Text>
+                                                                    <Image source={plusImg} />
+                                                                    <Text></Text>
+                                                                </Pressable>}
+                                                            {
+                                                                polls.map(item => {
+                                                                    return (
+                                                                        <View style={styles.clubCardCont} key={item.id}>
+                                                                            <Pressable style={styles.imgInCardCont}>
+                                                                                <Image style={styles.imgInCard} source={{ uri: surveysBanner + item.banner }} />
+                                                                            </Pressable>
+                                                                            <Text style={styles.blubCardTitle}>{item.title}</Text>
+                                                                            <Text style={{
+                                                                                color: '#d6ad7b',
+                                                                                fontFamily: 'Geologica-Thin',
+                                                                                fontSize: 15,
+                                                                                marginVertical: 5
+                                                                            }}> {item.questionary.length} {item.questionary.length > 1 ? <>questions</> : <>question</>}</Text>
+                                                                        </View>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </>
+                                                        :
+                                                        <View style={styles.EmptyMsg}>
+                                                            <Image style={styles.empty} source={empty} alt="empty" />
+                                                            <Text style={styles.noH3}>No polls assigned yet</Text>
+                                                            <View style={{
+                                                                display: 'flex',
+                                                                justifyContent: 'center',
+                                                                flexDirection: 'row',
+                                                                width: 270,
+                                                                marginTop: 20
+                                                            }}>
+                                                                {club.clubOwner === user.userName &&
+                                                                    <Pressable onPress={() => setSure(true)} style={styles.flyButtons}>
+                                                                        <Text style={styles.textInFlyButtons}>Create a new survey</Text>
+                                                                    </Pressable>}
+                                                            </View>
+                                                        </View>
+                                                    }
                                                 </View>
                                             </ScrollView>
                                         </ClubNav>
-                                    </Layout>
+                                    </Layout >
                                 </>
                             )
                                 :
@@ -316,7 +378,7 @@ const Surveys = ({ navigation }) => {
                     </ContextClub.Consumer>
                 )
             }}
-        </ContextUser.Consumer>
+        </ContextUser.Consumer >
     )
 }
 export default Surveys

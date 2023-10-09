@@ -118,7 +118,15 @@ export const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
         padding: 10,
         marginBottom: 20,
-        borderRadius: 20
+        borderRadius: 20,
+    },
+    plusCont: {
+        backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
+        padding: 10,
+        marginBottom: 20,
+        borderRadius: 20,
+        // height: 100
+        alignItems: 'center'
     },
     pInCard: {
         color: '#fff',
@@ -612,5 +620,15 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Geologica-Thin',
         // marginLeft:
+    },
+    bannerInput: {
+        borderColor: 'rgba(214, 173, 123, 0.6156862745)',
+        width: '100%',
+        height: 80,
+        borderWidth: 1,
+        borderRadius: 10,
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
