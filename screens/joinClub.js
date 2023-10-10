@@ -90,7 +90,7 @@ const JoinClub = ({ navigation }) => {
                             <>
                                 {sure &&
                                     <Pressable onPress={() => setSure(false)} style={styles.buttonToFlyBoxes}>
-                                        <View style={styles.boxToConfirm}>
+                                        <Pressable style={styles.boxToConfirm}>
                                             <Pressable onPress={() => {
                                                 setSure(false)
                                                 setMoreInfoClub({})
@@ -106,7 +106,7 @@ const JoinClub = ({ navigation }) => {
                                             <Pressable onPress={() => serverChange(moreInfoClub)} style={styles.joinButton}>
                                                 <Text style={styles.textInButton}>Join</Text>
                                             </Pressable>
-                                        </View>
+                                        </Pressable>
                                     </Pressable>
                                 }
                                 <Layout>

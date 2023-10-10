@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
         paddingVertical: 7.5,
         borderRadius: 100,
         opacity: 0.5,
-        marginBottom: 20,
+        // marginBottom: 20,
         width: '100%',
         alignItems: 'center'
     },
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 7.5,
         borderRadius: 100,
-        marginBottom: 20,
+        // marginBottom: 20,
         width: '100%',
         alignItems: 'center'
     },
@@ -260,7 +260,11 @@ export const styles = StyleSheet.create({
     boxToConfirm: {
         backgroundColor: 'rgba(0, 0, 0, 0.960196078)',
         padding: 15,
-        borderRadius: 20
+        borderRadius: 20,
+        // position: 'absolute',
+        // top: '25%',
+        // zIndex: 100,
+        // left: '5%'
     },
     confirmText: {
         color: '#ffffff',
@@ -538,7 +542,13 @@ export const styles = StyleSheet.create({
     },
     widthForBoxes: {
         marginTop: 20,
-        width: 320
+        width: 320,
+        maxHeight: 400
+    },
+    widthForBoxes2: {
+        marginTop: 20,
+        width: 320,
+        maxHeight: 300
     },
     titleForCalendar: {
         color: '#fff',
@@ -602,7 +612,7 @@ export const styles = StyleSheet.create({
         bottom: 200
     },
     tableHeader: {
-        backgroundColor: 'rgba(214, 173, 123, 0.2882352941)', 
+        backgroundColor: 'rgba(214, 173, 123, 0.2882352941)',
         borderWidth: 0
     },
     table: {
@@ -630,5 +640,83 @@ export const styles = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    ScrollViewInSure: {
+        backgroundColor: 'white',
+        width: '100%',
+        height: '100%',
+        top: 0,
+    },
+    cadrQuestion: {
+        backgroundColor: 'rgba(79, 98, 115, 0.431372549)',
+        // marginBottom: 10,
+        marginTop: 20,
+        borderRadius: 10,
+        padding: 10
+    },
+    trashDisa: {
+        width: 30,
+        height: 30,
+        opacity: 0.5
+    },
+    trash: {
+        width: 30,
+        height: 30
+    },
+    QuestionAndDelete: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    addButton: {
+        backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        width: 138,
+    },
+    questionTitle: {
+        color: '#d6ad7b',
+        fontFamily: 'Geologica-Bold',
+        fontSize: 20
+    },
+    radioText: {
+        color: '#fff',
+        fontFamily: 'Geologica-Light',
+        fontSize: 17,
+        marginLeft: 10
+    },
+    dot: {
+        width: 15,
+        height: 15,
+        backgroundColor: '#d6ad7b',
+        borderRadius: 100
+    },
+    dotDisa: {
+        width: 15,
+        height: 15,
+        // backgroundColor: '#d6ad7b',
+        borderRadius: 100,
+        borderColor: '#d6ad7b',
+        borderWidth: 1
+    },
+    dotAndTextCont: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        margin: 5,
+        marginLeft: 0
+    },
+    deleteButton: {
+        backgroundColor: 'rgba(255, 0, 0, 0.2941176471)',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        alignItems: 'center',
+    },
+    titleForSurveyGraph: {
+        color: '#fff',
+        fontFamily: 'Geologica-Regular',
+        fontSize: 25,
+        // marginBottom: 10
     }
 });

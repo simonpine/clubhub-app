@@ -167,7 +167,7 @@ const UserSettings = ({ navigation }) => {
                         <>
                             {sure &&
                                 <Pressable onPress={() => setSure(false)} style={styles.buttonToFlyBoxes}>
-                                    <View style={styles.boxToConfirm}>
+                                    <Pressable style={styles.boxToConfirm}>
                                         <Text style={styles.confirmText}>Are you sure of the changes?</Text>
                                         <View style={styles.confirmButtonsCont}>
                                             <Pressable onPress={setTheData} style={styles.ConfirmButtons}>
@@ -181,7 +181,7 @@ const UserSettings = ({ navigation }) => {
                                                 }}>No, cancel</Text>
                                             </Pressable>
                                         </View>
-                                    </View>
+                                    </Pressable>
                                 </Pressable>
                             }
                             <Layout>

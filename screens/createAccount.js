@@ -130,29 +130,11 @@ const CreateAccount = ({ navigation }) => {
 
                     <Pressable
                         onPress={createA}
-                        style={userNameRef.length === 0 || passwordRef.length === 0 || confirmPasswordRef.length === 0 || quiestionRef === 'Select a quiestion:' || answerRef.length === 0 || confirmAnswerRef.length === 0 ? styles.disabled : buttonSt}
+                        style={userNameRef.length === 0 || passwordRef.length === 0 || confirmPasswordRef.length === 0 || quiestionRef === 'Select a quiestion:' || answerRef.length === 0 || confirmAnswerRef.length === 0 ? styles.disabled : styles.Notdisabled}
                         disabled={userNameRef.length === 0 || passwordRef.length === 0 || confirmPasswordRef.length === 0 || quiestionRef === 'Select a quiestion:' || answerRef.length === 0 || confirmAnswerRef.length === 0}
-                        onPressIn={() => setbuttonSt({
-                            backgroundColor: 'rgba(79, 98, 115, 0.3)',
-                            alignSelf: 'flex-start',
-                            paddingHorizontal: 20,
-                            paddingVertical: 5,
-                            borderRadius: 100,
-                            marginBottom: 20,
-                            width: '100%',
-                            alignItems: 'center'
-                        })}
-                        onPressOut={() => setbuttonSt({
-                            backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
-                            alignSelf: 'flex-start',
-                            paddingHorizontal: 20,
-                            paddingVertical: 5,
-                            borderRadius: 100,
-                            marginBottom: 20,
-                            width: '100%',
-                            alignItems: 'center'
-                        })}
-                    ><Text style={userNameRef.length === 0 || passwordRef.length === 0 || confirmPasswordRef.length === 0 || quiestionRef === '' || answerRef.length === 0 || confirmAnswerRef.length === 0 ? styles.disabledText : styles.textInButton}>Create</Text></Pressable>
+                    ><Text style={styles.textInButton}>Create</Text></Pressable>
+                    <Text></Text>
+                    <Text></Text>
                 </ScrollView>
 
             </Layout>

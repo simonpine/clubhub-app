@@ -38,9 +38,10 @@ const Grades = ({ navigation }) => {
                                                         <DataTable.Header style={styles.tableHeader}>
                                                             <DataTable.Title ></DataTable.Title>
                                                             {grades.students.map(item => {
-                                                                return item.studentName === user.userName || user.userName === club.clubOwner && (
+                                                                return item.studentName === user.userName || user.userName === club.clubOwner ? (
                                                                     <DataTable.Title key={item.studentName} ><Text style={styles.HeaderTitlesGrades}>{item.studentName}</Text></DataTable.Title>
-                                                                )
+                                                                ):
+                                                                (<Text key={item.studentName} ></Text>)
                                                             })
                                                             }
                                                         </DataTable.Header>
@@ -49,8 +50,12 @@ const Grades = ({ navigation }) => {
                                                                 <DataTable.Row key={index}>
                                                                     <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>{gra}</Text></DataTable.Cell>
                                                                     {grades.students.map(stu => {
-                                                                        return stu.studentName === user.userName || user.userName === club.clubOwner && (
+                                                                        return stu.studentName === user.userName || user.userName === club.clubOwner ? (
                                                                             <DataTable.Cell key={stu.studentName + index}><Text style={styles.gradeInTable}>     {stu.gardes[index]}</Text></DataTable.Cell>
+                                                                        )
+                                                                        :
+                                                                        (
+                                                                            <Text key={stu.studentName + index}></Text>
                                                                         )
                                                                     })
                                                                     }
@@ -61,8 +66,12 @@ const Grades = ({ navigation }) => {
                                                         <DataTable.Row >
                                                             <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>Totla: </Text></DataTable.Cell>
                                                             {grades.students.map(stu => {
-                                                                return stu.studentName === user.userName || user.userName === club.clubOwner && (
+                                                                return stu.studentName === user.userName || user.userName === club.clubOwner ? (
                                                                     <DataTable.Cell key={stu.studentName}><Text style={styles.gradeInTable}>  {stu.total}</Text></DataTable.Cell>
+                                                                )
+                                                                :
+                                                                (
+                                                                    <Text key={stu.studentName}></Text>
                                                                 )
                                                             })
                                                             }

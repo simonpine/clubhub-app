@@ -132,7 +132,7 @@ const Chat = ({ navigation }) => {
                                 <>
                                     {sure &&
                                         <Pressable onPress={() => setSure(false)} style={styles.buttonToFlyBoxes}>
-                                            <View style={styles.boxToConfirm}>
+                                            <Pressable style={styles.boxToConfirm}>
                                                 <Pressable onPress={() => {
                                                     setSure(false)
                                                 }}>
@@ -143,7 +143,7 @@ const Chat = ({ navigation }) => {
                                                     <Text style={styles.textTilteConfirmJoin}>{userInfo.userName}</Text>
                                                     <Text style={styles.descriptionConfirmJoin}>{userInfo.description}</Text>
                                                 </View>
-                                            </View>
+                                            </Pressable>
                                         </Pressable>
                                     }
                                     <Layout>

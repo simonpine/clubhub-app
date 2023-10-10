@@ -95,54 +95,68 @@ const CalendarClub = ({ navigation }) => {
                                 return user !== null && club !== null ? (
                                     <>
                                         {sure &&
-                                            <Pressable onPress={() => setSure(false)} style={styles.buttonToFlyBoxes}>
-                                                <View style={styles.boxToConfirm}>
-                                                    <Pressable onPress={() => {
-                                                        setSure(false)
-                                                    }}>
-                                                        <Image style={styles.closeButton} source={closeImage} />
-                                                    </Pressable>
-                                                    <View style={styles.widthForBoxes}>
-                                                        <Text style={styles.inputDescrip}>Title:</Text>
-                                                        <TextInput
-                                                            onChangeText={setTitleRef}
-                                                            value={titleRef}
-                                                            placeholderTextColor='#C7C7CD'
-                                                            placeholder="Change of location"
-                                                            style={styles.input} />
-                                                        <Text style={styles.inputDescrip}>Desciption:</Text>
-                                                        <TextInput
-                                                            onChangeText={setDescriptionRef}
-                                                            value={descriptionRef}
-                                                            placeholderTextColor='#C7C7CD'
-                                                            placeholder="The cooking activity will take place in the dining room this day"
-                                                            style={styles.input} />
-                                                        <Text style={styles.inputDescrip}>Date: {dateRef}</Text>
-
-                                                        <Pressable
-
-                                                            style={{
-                                                                backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
-                                                                alignSelf: 'flex-start',
-                                                                paddingHorizontal: 20,
-                                                                paddingVertical: 7.5,
-                                                                borderRadius: 100,
-                                                                marginTop: 20,
-                                                                width: '100%',
-                                                                alignItems: 'center'
-                                                            }}
-                                                            disabled={titleRef === '' || descriptionRef === ''}
-
-                                                            onPress={handleSubmit}
-                                                        ><Text style={styles.textInButton}>Add event</Text>
+                                            <>
+                                                <Pressable onPress={() => setSure(false)} style={styles.buttonToFlyBoxes}>
+                                                    <Pressable style={styles.boxToConfirm}>
+                                                        <Pressable onPress={() => {
+                                                            setSure(false)
+                                                        }}>
+                                                            <Image style={styles.closeButton} source={closeImage} />
                                                         </Pressable>
-                                                    </View>
-                                                </View>
-                                            </Pressable>
+                                                        <View style={styles.widthForBoxes}>
+                                                            <Text style={styles.inputDescrip}>Title:</Text>
+                                                            <TextInput
+                                                                onChangeText={setTitleRef}
+                                                                value={titleRef}
+                                                                placeholderTextColor='#C7C7CD'
+                                                                placeholder="Change of location"
+                                                                style={styles.input} />
+                                                            <Text style={styles.inputDescrip}>Desciption:</Text>
+                                                            <TextInput
+                                                                onChangeText={setDescriptionRef}
+                                                                value={descriptionRef}
+                                                                placeholderTextColor='#C7C7CD'
+                                                                placeholder="The cooking activity will take place in the dining room this day"
+                                                                style={styles.input} />
+                                                            <Text style={styles.inputDescrip}>Date: {dateRef}</Text>
+
+                                                            <Pressable
+
+                                                                style={descriptionRef !== '' & titleRef !== '' ? {
+                                                                    backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
+                                                                    alignSelf: 'flex-start',
+                                                                    paddingHorizontal: 20,
+                                                                    paddingVertical: 7.5,
+                                                                    borderRadius: 100,
+                                                                    marginTop: 20,
+                                                                    width: '100%',
+                                                                    alignItems: 'center'
+                                                                } :
+                                                                    {
+                                                                        backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
+                                                                        alignSelf: 'flex-start',
+                                                                        paddingHorizontal: 20,
+                                                                        paddingVertical: 7.5,
+                                                                        borderRadius: 100,
+                                                                        marginTop: 20,
+                                                                        width: '100%',
+                                                                        alignItems: 'center',
+                                                                        opacity: 0.5
+                                                                    }
+                                                                }
+                                                                disabled={titleRef === '' || descriptionRef === ''}
+
+                                                                onPress={handleSubmit}
+                                                            ><Text style={styles.textInButton}>Add event</Text>
+                                                            </Pressable>
+                                                        </View>
+                                                    </Pressable>
+                                                </Pressable>
+                                            </>
                                         }
                                         {currentId !== '' &&
                                             <Pressable onPress={() => setCurrentId('')} style={styles.buttonToFlyBoxes}>
-                                                <View style={styles.boxToConfirm}>
+                                                <Pressable style={styles.boxToConfirm}>
                                                     <Pressable onPress={() => {
                                                         setCurrentId('')
                                                     }}>
@@ -166,7 +180,7 @@ const CalendarClub = ({ navigation }) => {
                                                             </Pressable>
                                                         }
                                                     </View>
-                                                </View>
+                                                </Pressable>
                                             </Pressable>
                                         }
                                         <Layout>

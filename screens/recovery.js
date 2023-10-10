@@ -131,24 +131,8 @@ const Recovery = ({ navigation }) => {
                         <Text style={styles.err}>{err}</Text>
                         <Pressable
                             onPress={getQuestion}
-                            style={userNameRef.length === 0 ? styles.disabled : buttonSt}
+                            style={userNameRef.length === 0 ? styles.disabled : styles.Notdisabled}
                             disabled={userNameRef.length === 0}
-                            onPressIn={() => setbuttonSt({
-                                backgroundColor: 'rgba(79, 98, 115, 0.3)',
-                                alignSelf: 'flex-start',
-                                paddingHorizontal: 20,
-                                paddingVertical: 5,
-                                borderRadius: 100,
-                                marginBottom: 20
-                            })}
-                            onPressOut={() => setbuttonSt({
-                                backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
-                                alignSelf: 'flex-start',
-                                paddingHorizontal: 20,
-                                paddingVertical: 5,
-                                borderRadius: 100,
-                                marginBottom: 20
-                            })}
                         ><Text style={userNameRef.length === 0 ? styles.disabledText : styles.textInButton}>Get question</Text></Pressable>
 
                     </View>

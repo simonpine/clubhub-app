@@ -94,27 +94,10 @@ const Login = ({ navigation }) => {
                                     return (
                                         <Pressable
                                             onPress={LogInFunction}
-                                            style={userName === '' || password === '' ? styles.disabled : buttonSt}
+                                            style={userName === '' || password === '' ? styles.disabled : styles.Notdisabled}
                                             disabled={userName === '' || password === ''}
-                                            onPressIn={() => setbuttonSt({
-                                                backgroundColor: 'rgba(79, 98, 115, 0.3)',
-                                                alignSelf: 'flex-start',
-                                                paddingHorizontal: 20,
-                                                paddingVertical: 5,
-                                                borderRadius: 100,
-                                                width: '100%',
-                                                alignItems: 'center'
-                                            })}
-                                            onPressOut={() => setbuttonSt({
-                                                backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
-                                                alignSelf: 'flex-start',
-                                                paddingHorizontal: 20,
-                                                paddingVertical: 5,
-                                                borderRadius: 100,
-                                                width: '100%',
-                                                alignItems: 'center'
-                                            })}
-                                        ><Text style={userName === '' || password === '' ? styles.disabledText : styles.textInButton}>Log in</Text>
+            
+                                        ><Text style={styles.textInButton}>Log in</Text>
                                         </Pressable>
                                     )
                                 }}
@@ -234,9 +217,20 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
         alignSelf: 'flex-start',
         paddingHorizontal: 20,
-        paddingVertical: 5,
+        paddingVertical: 7.5,
         borderRadius: 100,
         opacity: 0.5,
+        // marginBottom: 20,
+        width: '100%',
+        alignItems: 'center'
+    },
+    Notdisabled: {
+        backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        // marginBottom: 20,
         width: '100%',
         alignItems: 'center'
     },
