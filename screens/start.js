@@ -10,7 +10,7 @@ const Start = ({ navigation }) => {
         const value = await AsyncStorage.getItem('SavedUser')
         if (value !== null) {
             navigation.navigate('Home')
-            console.log(value)
+            // console.log(value)
         }
         else {
             navigation.navigate('Login')

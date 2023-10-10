@@ -152,7 +152,6 @@ const UserSettings = ({ navigation }) => {
                             }
                         }
 
-                        await console.log('funciono')
                         await setNameRef('')
                         await setDescriptionRef('')
                         await setConfirmPasswordRef('')

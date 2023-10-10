@@ -28,8 +28,6 @@ export const CustomProviderClub = ({ children }) => {
             const res = await getClubId(id)
             if ((res[0]) === undefined) {
                 // window.location.reload(true)
-                console.log(res, id)
-
             }
             else {
                 await setClub(res[0])
