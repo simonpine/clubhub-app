@@ -5,7 +5,6 @@ import { ContextUser, CustomProvider } from '../context/userContext'
 import { CustomProviderClub, ContextClub } from "../context/clubContext";
 import { useState } from "react";
 import { BannersImg, chatsFlies } from "../api";
-import ClubNav from "../components/clubNav";
 import file from '../assets/document.png'
 import send from '../assets/send.png'
 import upload from '../assets/upload.png'
@@ -120,57 +119,55 @@ const Events = ({ navigation }) => {
 
                             return user !== null && club !== null ? (
                                 <Layout>
-                                    <ClubNav sett={user.userName === club.clubOwner} n={navigation} current={1}>
-                                        <ScrollView
+                                    <ScrollView
 
-                                            refreshControl={
-                                                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                                            }
-                                        >
-                                            <View style={styles.EventsCont}>
-                                                <View style={styles.clubBanner}>
-                                                    <Image style={styles.clubBannerImage} source={{ uri: BannersImg + club.clubBanner }} />
-                                                    <Text style={styles.textInClubBanner}>{club.title}</Text>
-                                                </View>
-                                                {user.userName === club.clubOwner &&
-                                                    <View style={styles.formForMessagesCOnt}>
-                                                        <Pressable style={styles.PresableContEventMessage}>
-                                                            <Image style={styles.buttonInFormSend} source={upload} />
-                                                        </Pressable>
-                                                        <TextInput value={message} onChangeText={setMessage} style={styles.inputForMessages} />
-                                                        <Pressable style={styles.PresableContEventMessage} onPress={hundleSubmit}>
-                                                            <Image style={styles.buttonInFormSend} source={send} />
-                                                        </Pressable>
-                                                    </View>
-                                                }
-                                                {events.length !== 0 &&
-                                                    events.map(evt => {
-                                                        return (
-                                                            <View key={evt.id} style={evt.from !== user.userName ? styles.messageFromOther : styles.messageFromOther}>
-                                                                {(evt.typeMess !== 'file' & evt.typeMess !== 'text+file') ?
-                                                                    <View className="mess messEvents" >
-                                                                        <Text style={styles.dateMessage}>{evt.date}</Text>
-                                                                        {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
-                                                                        {evt.fileName !== null & evt.fileName !== 'null' ? <Image style={styles.imgUploadedByUser} source={{ uri: chatsFlies + evt.fileName }} /> : <></>}
-                                                                    </View>
-                                                                    :
-                                                                    <View className="mess messEvents" >
-                                                                        <Text style={styles.dateMessage}>{evt.date}</Text>
-                                                                        {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
-                                                                        <View style={styles.documentContainer}>
-                                                                            <Image style={styles.documentImg} source={file} />
-                                                                            <Text style={styles.textOfDownload}>Download</Text>
-                                                                        </View>
-                                                                    </View>
-                                                                    // <></>
-                                                                }
-                                                            </View>
-                                                        )
-                                                    })
-                                                }
+                                        refreshControl={
+                                            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                        }
+                                    >
+                                        <View style={styles.EventsCont}>
+                                            <View style={styles.clubBanner}>
+                                                <Image style={styles.clubBannerImage} source={{ uri: BannersImg + club.clubBanner }} />
+                                                <Text style={styles.textInClubBanner}>{club.title}</Text>
                                             </View>
-                                        </ScrollView>
-                                    </ClubNav>
+                                            {user.userName === club.clubOwner &&
+                                                <View style={styles.formForMessagesCOnt}>
+                                                    <Pressable style={styles.PresableContEventMessage}>
+                                                        <Image style={styles.buttonInFormSend} source={upload} />
+                                                    </Pressable>
+                                                    <TextInput value={message} onChangeText={setMessage} style={styles.inputForMessages} />
+                                                    <Pressable style={styles.PresableContEventMessage} onPress={hundleSubmit}>
+                                                        <Image style={styles.buttonInFormSend} source={send} />
+                                                    </Pressable>
+                                                </View>
+                                            }
+                                            {events.length !== 0 &&
+                                                events.map(evt => {
+                                                    return (
+                                                        <View key={evt.id} style={evt.from !== user.userName ? styles.messageFromOther : styles.messageFromOther}>
+                                                            {(evt.typeMess !== 'file' & evt.typeMess !== 'text+file') ?
+                                                                <View className="mess messEvents" >
+                                                                    <Text style={styles.dateMessage}>{evt.date}</Text>
+                                                                    {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
+                                                                    {evt.fileName !== null & evt.fileName !== 'null' ? <Image style={styles.imgUploadedByUser} source={{ uri: chatsFlies + evt.fileName }} /> : <></>}
+                                                                </View>
+                                                                :
+                                                                <View className="mess messEvents" >
+                                                                    <Text style={styles.dateMessage}>{evt.date}</Text>
+                                                                    {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
+                                                                    <View style={styles.documentContainer}>
+                                                                        <Image style={styles.documentImg} source={file} />
+                                                                        <Text style={styles.textOfDownload}>Download</Text>
+                                                                    </View>
+                                                                </View>
+                                                                // <></>
+                                                            }
+                                                        </View>
+                                                    )
+                                                })
+                                            }
+                                        </View>
+                                    </ScrollView>
                                 </Layout>
                             )
                                 :

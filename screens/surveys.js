@@ -6,7 +6,6 @@ import { ContextClub } from "../context/clubContext";
 import { useState } from "react";
 import { addRes, addSurveyToServer, surveysBanner, deleteSurvey } from "../api"
 import plusImg from '../assets/plus.png'
-import ClubNav from "../components/clubNav";
 import closeImage from '../assets/close.png'
 import empty from '../assets/empty.png'
 import trash from '../assets/delete.png'
@@ -409,7 +408,7 @@ const Surveys = ({ navigation }) => {
                                                                     return (
                                                                         <Pressable key={answer.id}>
                                                                             <Text style={styles.titleForSurveyGraph}>{answer.question}</Text>
-                                                                            <BarChart                                                                                
+                                                                            <BarChart
                                                                                 data={data}
                                                                                 width={400}
                                                                                 height={220}
@@ -460,91 +459,89 @@ const Surveys = ({ navigation }) => {
                                             </Pressable>
                                         }
                                         <Layout>
-                                            <ClubNav sett={user.userName === club.clubOwner} n={navigation} current={5}>
-                                                <ScrollView
-                                                    refreshControl={
-                                                        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                                                    }
-                                                >
-                                                    <View style={styles.chatCont}>
-                                                        {polls.length !== 0 ?
-                                                            <>
-                                                                {club.clubOwner === user.userName &&
-                                                                    <Pressable onPress={() => setSure(true)} style={styles.plusCont}>
-                                                                        <Text></Text>
-                                                                        <Image source={plusImg} />
-                                                                        <Text></Text>
-                                                                    </Pressable>}
-                                                                {
-                                                                    polls.map(item => {
-                                                                        return (
-                                                                            <View style={styles.clubCardCont} key={item.id}>
-                                                                                <Pressable
-                                                                                    disabled={item.whoAnswered.some(it => it === user.userName)}
-                                                                                    onPress={() => {
-                                                                                        setCurrentAnswering(item)
-                                                                                        const copy = []
-                                                                                        for (let i = 0; i < item.answers.length; i++) {
-                                                                                            const oneObj = {
-                                                                                                id: item.answers[i].id,
-                                                                                                question: item.answers[i].question,
-                                                                                                options: [],
-                                                                                            }
-                                                                                            for (let j = 0; j < item.answers[i].options.length; j++) {
-                                                                                                const twoObj = {
-                                                                                                    id: item.answers[i].options[j].id,
-                                                                                                    answer: item.answers[i].options[j].answer,
-                                                                                                    votes: item.answers[i].options[j].votes,
-                                                                                                }
-                                                                                                oneObj.options.push(twoObj)
-                                                                                            }
-                                                                                            copy.push(oneObj)
+                                            <ScrollView
+                                                refreshControl={
+                                                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                                }
+                                            >
+                                                <View style={styles.chatCont}>
+                                                    {polls.length !== 0 ?
+                                                        <>
+                                                            {club.clubOwner === user.userName &&
+                                                                <Pressable onPress={() => setSure(true)} style={styles.plusCont}>
+                                                                    <Text></Text>
+                                                                    <Image source={plusImg} />
+                                                                    <Text></Text>
+                                                                </Pressable>}
+                                                            {
+                                                                polls.map(item => {
+                                                                    return (
+                                                                        <View style={styles.clubCardCont} key={item.id}>
+                                                                            <Pressable
+                                                                                disabled={item.whoAnswered.some(it => it === user.userName)}
+                                                                                onPress={() => {
+                                                                                    setCurrentAnswering(item)
+                                                                                    const copy = []
+                                                                                    for (let i = 0; i < item.answers.length; i++) {
+                                                                                        const oneObj = {
+                                                                                            id: item.answers[i].id,
+                                                                                            question: item.answers[i].question,
+                                                                                            options: [],
                                                                                         }
-                                                                                        setRes(copy)
+                                                                                        for (let j = 0; j < item.answers[i].options.length; j++) {
+                                                                                            const twoObj = {
+                                                                                                id: item.answers[i].options[j].id,
+                                                                                                answer: item.answers[i].options[j].answer,
+                                                                                                votes: item.answers[i].options[j].votes,
+                                                                                            }
+                                                                                            oneObj.options.push(twoObj)
+                                                                                        }
+                                                                                        copy.push(oneObj)
+                                                                                    }
+                                                                                    setRes(copy)
 
-                                                                                    }} style={item.whoAnswered.some(it => it === user.userName) ? {
-                                                                                        width: '100%',
-                                                                                        height: 140,
-                                                                                        borderRadius: 15,
-                                                                                        marginBottom: 10,
-                                                                                        overflow: 'hidden',
-                                                                                        opacity: 0.3
-                                                                                    } : styles.imgInCardCont}>
-                                                                                    <Image style={styles.imgInCard} source={{ uri: surveysBanner + item.banner }} />
-                                                                                </Pressable>
-                                                                                <Text style={styles.blubCardTitle}>{item.title}</Text>
-                                                                                <Text style={{
-                                                                                    color: '#d6ad7b',
-                                                                                    fontFamily: 'Geologica-Thin',
-                                                                                    fontSize: 15,
-                                                                                    marginVertical: 5
-                                                                                }}> {item.questionary.length} {item.questionary.length > 1 ? <>questions</> : <>question</>}</Text>
-                                                                            </View>
-                                                                        )
-                                                                    })
-                                                                }
-                                                            </>
-                                                            :
-                                                            <View style={styles.EmptyMsg}>
-                                                                <Image style={styles.empty} source={empty} alt="empty" />
-                                                                <Text style={styles.noH3}>No polls assigned yet</Text>
-                                                                <View style={{
-                                                                    display: 'flex',
-                                                                    justifyContent: 'center',
-                                                                    flexDirection: 'row',
-                                                                    width: 270,
-                                                                    marginTop: 20
-                                                                }}>
-                                                                    {club.clubOwner === user.userName &&
-                                                                        <Pressable onPress={() => setSure(true)} style={styles.flyButtons}>
-                                                                            <Text style={styles.textInFlyButtons}>Create a new survey</Text>
-                                                                        </Pressable>}
-                                                                </View>
+                                                                                }} style={item.whoAnswered.some(it => it === user.userName) ? {
+                                                                                    width: '100%',
+                                                                                    height: 140,
+                                                                                    borderRadius: 15,
+                                                                                    marginBottom: 10,
+                                                                                    overflow: 'hidden',
+                                                                                    opacity: 0.3
+                                                                                } : styles.imgInCardCont}>
+                                                                                <Image style={styles.imgInCard} source={{ uri: surveysBanner + item.banner }} />
+                                                                            </Pressable>
+                                                                            <Text style={styles.blubCardTitle}>{item.title}</Text>
+                                                                            <Text style={{
+                                                                                color: '#d6ad7b',
+                                                                                fontFamily: 'Geologica-Thin',
+                                                                                fontSize: 15,
+                                                                                marginVertical: 5
+                                                                            }}> {item.questionary.length} {item.questionary.length > 1 ? <>questions</> : <>question</>}</Text>
+                                                                        </View>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </>
+                                                        :
+                                                        <View style={styles.EmptyMsg}>
+                                                            <Image style={styles.empty} source={empty} alt="empty" />
+                                                            <Text style={styles.noH3}>No polls assigned yet</Text>
+                                                            <View style={{
+                                                                display: 'flex',
+                                                                justifyContent: 'center',
+                                                                flexDirection: 'row',
+                                                                width: 270,
+                                                                marginTop: 20
+                                                            }}>
+                                                                {club.clubOwner === user.userName &&
+                                                                    <Pressable onPress={() => setSure(true)} style={styles.flyButtons}>
+                                                                        <Text style={styles.textInFlyButtons}>Create a new survey</Text>
+                                                                    </Pressable>}
                                                             </View>
-                                                        }
-                                                    </View>
-                                                </ScrollView>
-                                            </ClubNav>
+                                                        </View>
+                                                    }
+                                                </View>
+                                            </ScrollView>
                                         </Layout >
                                     </>
                                 )

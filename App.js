@@ -13,12 +13,28 @@ import UserSettings from './screens/userSettings';
 import CreateClub from './screens/createClub';
 import Events from './screens/events';
 import CalendarClub from './screens/calendar';
-import { CustomProvider } from './context/userContext';
-import { CustomProviderClub } from './context/clubContext';
+import { CustomProvider, ContextUser } from './context/userContext';
+import { CustomProviderClub, ContextClub } from './context/clubContext';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Chat from './screens/chat';
 import Grades from './screens/grades';
 import Surveys from './screens/surveys';
+import ClubSettings from './screens/clubSettings';
+import { styles } from './style';
+import { View, Image, Text, Pressable } from 'react-native';
+import homeImg from './assets/home.png'
+import flame from './assets/flame.png'
+import flameFocus from './assets/flameFocus.png'
+import surveys from './assets/surveys.png'
+import surveysFocus from './assets/surveysFocus.png'
+import grades from './assets/gardes.png'
+import gradesFocus from './assets/gardesFocus.png'
+import calendar from './assets/calendar.png'
+import calendarFocus from './assets/calendarFocus.png'
+import chat from './assets/chat.png'
+import chatFocus from './assets/chatFocus.png'
+import settings from './assets/settings.png'
+import settingsFocus from './assets/settingsFocus.png'
 
 const getFonts = () => {
   return Font.loadAsync({
@@ -32,21 +48,85 @@ const getFonts = () => {
 
 const Tab = createBottomTabNavigator();
 
-export const ClubsContNav = () => {
+export const ClubsContNav = ({ navigation }) => {
   return (
-    <Tab.Navigator screenOptions={{
-      tabBarStyle: {
-        // backgroundColor: '#0000ff',
-        // height: 100,
-        display: 'none'
-      },
-    }} initialRouteName="Events">
-      <Tab.Screen options={{ headerShown: false }} name="Events" component={Events} />
-      <Tab.Screen options={{ headerShown: false }} name="Calendar" component={CalendarClub} />
-      <Tab.Screen options={{ headerShown: false }} name="Chat" component={Chat} />
-      <Tab.Screen options={{ headerShown: false }} name="Grades" component={Grades} />
-      <Tab.Screen options={{ headerShown: false }} name="Surveys" component={Surveys} />
-    </Tab.Navigator>
+    <>
+      <Pressable style={styles.returnCont} onPress={() => navigation.navigate('Home')}>
+        <Image style={styles.imageForNav} source={homeImg} />
+      </Pressable>
+      <ContextUser.Consumer>
+        {({ user }) =>
+          <ContextClub.Consumer>
+            {({ club }) =>
+              <Tab.Navigator
+                screenOptions={{
+                  tabBarShowLabel: false,
+                  tabBarStyle: styles.buttonsAllTimeCont,
+                }}
+                initialRouteName="Events">
+                <Tab.Screen options={{
+                  headerShown: false,
+                  tabBarIcon: ({ focused }) => (
+                    <View style={styles.buttonOfNav}>
+                      <Image style={styles.imgForNav} source={focused ? calendarFocus : calendar} />
+                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Schedule</Text>
+                    </View>
+                  )
+                }} name="Calendar" component={CalendarClub} />
+                <Tab.Screen options={{
+                  headerShown: false,
+                  tabBarIcon: ({ focused }) => (
+                    <View style={styles.buttonOfNav}>
+                      <Image style={styles.imgForNav} source={focused ? chatFocus : chat} />
+                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Chat</Text>
+                    </View>
+                  )
+                }} name="Chat" component={Chat} />
+
+                <Tab.Screen options={{
+                  headerShown: false,
+                  tabBarIcon: ({ focused }) => (
+                    <View style={styles.buttonOfNav}>
+                      <Image style={styles.imgForNav} source={focused ? flameFocus : flame} />
+                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Events</Text>
+                    </View>
+                  )
+                }} name="Events" component={Events} />
+
+                <Tab.Screen options={{
+                  headerShown: false,
+                  tabBarIcon: ({ focused }) => (
+                    <View style={styles.buttonOfNav}>
+                      <Image style={styles.imgForNav} source={focused ? gradesFocus : grades} />
+                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Grades</Text>
+                    </View>
+                  )
+                }} name="Grades" component={Grades} />
+                <Tab.Screen options={{
+                  headerShown: false,
+                  tabBarIcon: ({ focused }) => (
+                    <View style={styles.buttonOfNav}>
+                      <Image style={styles.imgForNav} source={focused ? surveysFocus : surveys} />
+                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Surveys</Text>
+                    </View>
+                  )
+                }} name="Surveys" component={Surveys} />
+                {user.userName === club.clubOwner &&
+                  <Tab.Screen options={{
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => (
+                      <View style={styles.buttonOfNav}>
+                        <Image style={styles.imgForNav} source={focused ? settingsFocus : settings} />
+                        <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Settings</Text>
+                      </View>
+                    )
+                  }} name="ClubSettings" component={ClubSettings} />}
+              </Tab.Navigator>
+            }
+          </ContextClub.Consumer>
+        }
+      </ContextUser.Consumer>
+    </>
   );
 }
 

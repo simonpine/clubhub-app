@@ -5,7 +5,6 @@ import { ContextUser, CustomProvider } from '../context/userContext'
 import { CustomProviderClub, ContextClub } from "../context/clubContext";
 import { useState } from "react";
 import { BannersImg, chatsFlies } from "../api";
-import ClubNav from "../components/clubNav";
 import closeImage from '../assets/close.png'
 
 import { Calendar } from 'react-native-big-calendar'
@@ -184,7 +183,6 @@ const CalendarClub = ({ navigation }) => {
                                             </Pressable>
                                         }
                                         <Layout>
-                                            <ClubNav sett={user.userName === club.clubOwner} n={navigation} current={2}>
                                                 <ScrollView
                                                     refreshControl={
                                                         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -226,7 +224,6 @@ const CalendarClub = ({ navigation }) => {
 
                                                     </View>
                                                 </ScrollView>
-                                            </ClubNav>
                                         </Layout>
                                     </>
                                 )

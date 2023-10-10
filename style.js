@@ -173,26 +173,30 @@ export const styles = StyleSheet.create({
         height: '90%',
         left: '5%',
         top: '5%'
+
     },
     buttonsAllTimeCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
-        width: '100%',
         position: 'absolute',
-        bottom: 100,
+        paddingBottom: 30,
+        borderTopWidth: 0,
         height: 100,
-        zIndex: 100,
-        padding: 25,
-        paddingBottom: 50,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
     },
     textForNavButtons: {
         color: '#fff',
         fontFamily: 'Geologica-Thin',
-        fontSize: 9,
-        marginTop: 10
+        fontSize: 10,
+        width: 50,
+        marginTop: 10,
+        textAlign: 'center'
+    },
+    textForNavButtonsFocus: {
+        color: '#d6ad7b',
+        fontFamily: 'Geologica-Thin',
+        fontSize: 10,
+        width: 50,
+        marginTop: 10,
+        textAlign: 'center'
     },
     buttonsAllTimeCont2: {
         backgroundColor: 'rgba(0, 0, 0, 0.910196078)',
@@ -432,11 +436,13 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 20,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        overflow: 'hidden'
     },
     upImga: {
         width: 100,
-        height: 70
+        height: 70,
+        zIndex: 100
     },
     clubBanner: {
         width: '100%',
@@ -489,7 +495,7 @@ export const styles = StyleSheet.create({
         padding: 15,
         borderRadius: 100,
         position: 'absolute',
-        top: 0,
+        top: 50,
         left: '5%',
         zIndex: 1000
     },
@@ -717,6 +723,12 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Geologica-Regular',
         fontSize: 25,
-        // marginBottom: 10
+    },
+    imgInClubSettings: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 20,
+        position: 'absolute',
+        opacity: 0.6
     }
 });

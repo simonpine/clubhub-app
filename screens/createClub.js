@@ -72,7 +72,7 @@ const CreateClub = ({ navigation }) => {
                                     <Text style={styles.textInFlyButtons}>Return</Text>
                                 </Pressable>
                             </View>
-                            <ScrollView style={styles.joinCont}>
+                            <ScrollView automaticallyAdjustKeyboardInsets={true} style={styles.joinCont}>
 
                                 <View style={styles.all} >
                                     <Text style={styles.textTilte}>Create a club</Text>

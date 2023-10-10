@@ -3,6 +3,7 @@ import { BannersImg } from "../api";
 import { styles } from "../style";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ContextClub } from "../context/clubContext";
+
 function ClubCard({ clubCard, navigation }) {
 
 

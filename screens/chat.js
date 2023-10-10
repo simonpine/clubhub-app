@@ -5,7 +5,6 @@ import { ContextUser } from '../context/userContext'
 import { ContextClub } from "../context/clubContext";
 import { useState } from "react";
 import { chatsFlies, usersImg, getUser } from "../api";
-import ClubNav from "../components/clubNav";
 import file from '../assets/document.png'
 import closeImage from '../assets/close.png'
 
@@ -147,60 +146,57 @@ const Chat = ({ navigation }) => {
                                         </Pressable>
                                     }
                                     <Layout>
-                                        <ClubNav sett={user.userName === club.clubOwner} n={navigation} current={3}>
-
-                                            <View style={styles.formForMessagesContChat}>
-                                                <Pressable style={styles.PresableContEventMessage}>
-                                                    <Image style={styles.buttonInFormSend} source={upload} />
-                                                </Pressable>
-                                                <TextInput value={message} onChangeText={setMessage} style={styles.inputForMessages} />
-                                                <Pressable style={styles.PresableContEventMessage} onPress={hundleSubmit}>
-                                                    <Image style={styles.buttonInFormSend} source={send} />
-                                                </Pressable>
-                                            </View>
-                                            <ScrollView
-                                                automaticallyAdjustKeyboardInsets={true}
-                                                refreshControl={
-                                                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-                                                }
-                                            >
-                                                <View style={styles.chatCont}>
-                                                    {chat.length !== 0 &&
-                                                        chat.map(evt => {
-                                                            return (
-                                                                <View key={evt.id} style={evt.from === user.userName ? styles.allMesCont : styles.allMesCont2}>
-                                                                    <Pressable onPress={() => getUserInfo(evt.from)}>
-                                                                        {evt.logo !== 'null' ?
-                                                                            <Image style={styles.userImageInChat} source={{ uri: usersImg + evt.logo }} />
-                                                                            :
-                                                                            <Image style={styles.userImageInChat} source={userPhoto} />
-                                                                            // <Text>Hola</Text>
-                                                                        }
-                                                                    </Pressable>
-                                                                    {(evt.typeMess !== 'file' & evt.typeMess !== 'text+file') ?
-                                                                        <View style={evt.from !== user.userName ? styles.realOtherMessage : styles.ownMessage}>
-                                                                            <Text style={styles.dateMessage}>{evt.from === user.userName ? <>You</> : <>{evt.from}</>} {evt.date}</Text>
-                                                                            {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
-                                                                            {evt.fileName !== null & evt.fileName !== 'null' ? <Image style={styles.imgUploadedByUser2} source={{ uri: chatsFlies + evt.fileName }} /> : <></>}
-                                                                        </View>
+                                        <View style={styles.formForMessagesContChat}>
+                                            <Pressable style={styles.PresableContEventMessage}>
+                                                <Image style={styles.buttonInFormSend} source={upload} />
+                                            </Pressable>
+                                            <TextInput value={message} onChangeText={setMessage} style={styles.inputForMessages} />
+                                            <Pressable style={styles.PresableContEventMessage} onPress={hundleSubmit}>
+                                                <Image style={styles.buttonInFormSend} source={send} />
+                                            </Pressable>
+                                        </View>
+                                        <ScrollView
+                                            automaticallyAdjustKeyboardInsets={true}
+                                            refreshControl={
+                                                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                            }
+                                        >
+                                            <View style={styles.chatCont}>
+                                                {chat.length !== 0 &&
+                                                    chat.map(evt => {
+                                                        return (
+                                                            <View key={evt.id} style={evt.from === user.userName ? styles.allMesCont : styles.allMesCont2}>
+                                                                <Pressable onPress={() => getUserInfo(evt.from)}>
+                                                                    {evt.logo !== 'null' ?
+                                                                        <Image style={styles.userImageInChat} source={{ uri: usersImg + evt.logo }} />
                                                                         :
-                                                                        <View style={evt.from !== user.userName ? styles.realOtherMessage : styles.ownMessage}>
-                                                                            <Text style={styles.dateMessage}>{evt.from === user.userName ? <>You</> : <>{evt.from}</>} {evt.date}</Text>
-                                                                            {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
-                                                                            <View style={styles.documentContainer}>
-                                                                                <Image style={styles.documentImg} source={file} />
-                                                                                <Text style={styles.textOfDownload}>Download</Text>
-                                                                            </View>
-                                                                        </View>
-                                                                        // <></>
+                                                                        <Image style={styles.userImageInChat} source={userPhoto} />
+                                                                        // <Text>Hola</Text>
                                                                     }
-                                                                </View>
-                                                            )
-                                                        })
-                                                    }
-                                                </View>
-                                            </ScrollView>
-                                        </ClubNav>
+                                                                </Pressable>
+                                                                {(evt.typeMess !== 'file' & evt.typeMess !== 'text+file') ?
+                                                                    <View style={evt.from !== user.userName ? styles.realOtherMessage : styles.ownMessage}>
+                                                                        <Text style={styles.dateMessage}>{evt.from === user.userName ? <>You</> : <>{evt.from}</>} {evt.date}</Text>
+                                                                        {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
+                                                                        {evt.fileName !== null & evt.fileName !== 'null' ? <Image style={styles.imgUploadedByUser2} source={{ uri: chatsFlies + evt.fileName }} /> : <></>}
+                                                                    </View>
+                                                                    :
+                                                                    <View style={evt.from !== user.userName ? styles.realOtherMessage : styles.ownMessage}>
+                                                                        <Text style={styles.dateMessage}>{evt.from === user.userName ? <>You</> : <>{evt.from}</>} {evt.date}</Text>
+                                                                        {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
+                                                                        <View style={styles.documentContainer}>
+                                                                            <Image style={styles.documentImg} source={file} />
+                                                                            <Text style={styles.textOfDownload}>Download</Text>
+                                                                        </View>
+                                                                    </View>
+                                                                    // <></>
+                                                                }
+                                                            </View>
+                                                        )
+                                                    })
+                                                }
+                                            </View>
+                                        </ScrollView>
                                     </Layout>
                                 </>
                             )
