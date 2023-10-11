@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import AppLoading from 'expo-app-loading';
+import { useState, useEffect } from 'react';
+// import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import Login from './screens/login';
 import CreateAccount from './screens/createAccount';
@@ -36,15 +36,18 @@ import chatFocus from './assets/chatFocus.png'
 import settings from './assets/settings.png'
 import settingsFocus from './assets/settingsFocus.png'
 
-const getFonts = () => {
-  return Font.loadAsync({
-    'Geologica-Regular': require('./assets/fonts/Geologica-Regular.ttf'),
-    'Geologica-Bold': require('./assets/fonts/Geologica-Bold.ttf'),
-    'Geologica-Thin': require('./assets/fonts/Geologica-Thin.ttf'),
-    'Geologica-Light': require('./assets/fonts/Geologica-Light.ttf'),
-    'Geologica-Medium': require('./assets/fonts/Geologica-Medium.ttf'),
-  })
-}
+import * as SplashScreen from 'expo-splash-screen';
+
+
+// const getFonts = () => {
+//   return Font.loadAsync({
+//     'Geologica-Regular': require('./assets/fonts/Geologica-Regular.ttf'),
+//     'Geologica-Bold': require('./assets/fonts/Geologica-Bold.ttf'),
+//     'Geologica-Thin': require('./assets/fonts/Geologica-Thin.ttf'),
+//     'Geologica-Light': require('./assets/fonts/Geologica-Light.ttf'),
+//     'Geologica-Medium': require('./assets/fonts/Geologica-Medium.ttf'),
+//   })
+// }
 
 const Tab = createBottomTabNavigator();
 
@@ -133,46 +136,70 @@ export const ClubsContNav = ({ navigation }) => {
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [FonstLoaded, setFontsLoaded] = useState(false);
-  if (FonstLoaded) {
-    return (
 
-      <CustomProvider>
-        <CustomProviderClub>
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="Start">
-              <Stack.Screen options={{ headerShown: false }} name="Start" component={Start} />
-              <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
-              <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
-              <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
-              <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
-              <Stack.Screen options={{ headerShown: false }} name="UserSettings" component={UserSettings} />
-              <Stack.Screen options={{ headerShown: false }} name="JoinClub" component={JoinClub} />
-              <Stack.Screen options={{ headerShown: false }} name="CreateClub" component={CreateClub} />
-              {/* <Stack.Group >
-                <Stack.Screen name="Events" component={Events} />
-                <Stack.Screen name="Calendar" component={CalendarClub} />
-              </Stack.Group> */}
-              <Stack.Screen
-                name="ClubsContNav"
-                component={ClubsContNav}
-                options={{ headerShown: false }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </CustomProviderClub>
-      </CustomProvider>
 
-    );
-  }
-  else {
-    return (
-      <AppLoading
-        startAsync={getFonts}
-        onFinish={() => setFontsLoaded(true)}
-        onError={(error) => console.warn(error)}
-      />
-    );
-  }
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await Font.loadAsync({
+          'Geologica-Regular': require('./assets/fonts/Geologica-Regular.ttf'),
+          'Geologica-Bold': require('./assets/fonts/Geologica-Bold.ttf'),
+          'Geologica-Thin': require('./assets/fonts/Geologica-Thin.ttf'),
+          'Geologica-Light': require('./assets/fonts/Geologica-Light.ttf'),
+          'Geologica-Medium': require('./assets/fonts/Geologica-Medium.ttf'),
+        });
+
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        await setFontsLoaded(true)
+      }
+    }
+
+    prepare();
+  }, []);
+
+  // if (FonstLoaded) {
+  return (
+
+    <>
+      {FonstLoaded &&
+        <CustomProvider>
+          <CustomProviderClub>
+            <NavigationContainer>
+              <Stack.Navigator initialRouteName="Start">
+                <Stack.Screen options={{ headerShown: false }} name="Start" component={Start} />
+                <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+                <Stack.Screen options={{ headerShown: false }} name="CreateAccount" component={CreateAccount} />
+                <Stack.Screen options={{ headerShown: false }} name="Recovery" component={Recovery} />
+                <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
+                <Stack.Screen options={{ headerShown: false }} name="UserSettings" component={UserSettings} />
+                <Stack.Screen options={{ headerShown: false }} name="JoinClub" component={JoinClub} />
+                <Stack.Screen options={{ headerShown: false }} name="CreateClub" component={CreateClub} />
+                <Stack.Screen
+                  name="ClubsContNav"
+                  component={ClubsContNav}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </CustomProviderClub>
+        </CustomProvider>}
+    </>
+
+  );
+  // }
+  // else {
+  //   return (
+  //     <AppLoading
+  //       startAsync={getFonts}
+  //       onFinish={() => setFontsLoaded(true)}
+  //       onError={(error) => console.warn(error)}
+  //     />
+  //     <></>
+  //   );
+  // }
 }
 
 
