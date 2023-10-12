@@ -112,7 +112,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         left: '5%',
         marginBottom: 220,
-        marginTop: 70
+        marginTop: 50
     },
     clubCardCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.6490196078)',
@@ -416,7 +416,14 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 15,
         fontFamily: 'Geologica-Thin',
-        marginVertical: 20
+        marginVertical: 20,
+        maxHeight: 100
+    },
+    descriptionConfirmJoinText: {
+        color: '#fff',
+        fontSize: 15,
+        fontFamily: 'Geologica-Thin',
+
     },
     joinButton: {
         backgroundColor: 'rgba(214, 173, 123, 0.3882352941)',
@@ -492,12 +499,20 @@ export const styles = StyleSheet.create({
     },
     returnCont: {
         backgroundColor: 'rgba(0, 0, 0, 0.900196078)',
-        padding: 15,
+        // padding: 5,
+        // borderRadius: 100,
+        // position: 'absolute',
+        // top: 50,
+        // left: '5%',
+        // zIndex: 100
+        // padding: 15,
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
         borderRadius: 100,
         position: 'absolute',
         top: 50,
         left: '5%',
-        zIndex: 1000
+        zIndex: 100
     },
     imageForNav: {
         width: 25,
@@ -730,5 +745,16 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         position: 'absolute',
         opacity: 0.6
+    },
+    redButton: {
+        backgroundColor: 'rgba(255, 0, 0, 0.541176471)',
+        // padding: 15,
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        position: 'absolute',
+        top: 50,
+        right: '5%',
+        zIndex: 100
     }
 });

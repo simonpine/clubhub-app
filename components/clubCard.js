@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View, Image, Text, TextInput, Pressable } from "react-native"
+import {  View, Image, Text, Pressable } from "react-native"
 import { BannersImg } from "../api";
 import { styles } from "../style";
 import AsyncStorage from '@react-native-async-storage/async-storage';

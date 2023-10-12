@@ -3,19 +3,12 @@ import Layout from "../components/layout";
 import { styles } from "../style";
 import ClubCard from "../components/clubCard";
 import { ContextUser } from '../context/userContext'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usersImg } from "../api";
 import userImg from '../assets/user.png'
 import plusImg from '../assets/plus.png'
 import empty from '../assets/empty.png'
-import { useIsFocused } from "@react-navigation/native";
-
 const Home = ({ navigation }) => {
-    const isFocused = useIsFocused();
-    useEffect(() => {
-        // isFocused && updateSomeFunction()
-    }, [isFocused]);
-
     const [plusing, setPlusing] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
     return (

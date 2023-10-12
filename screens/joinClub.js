@@ -102,7 +102,11 @@ const JoinClub = ({ navigation }) => {
                                             </View>
                                             <Text style={styles.textTilteConfirmJoin}>{moreInfoClub.title}</Text>
                                             <Text style={styles.ownerTilteConfirmJoin}>{moreInfoClub.clubOwner}</Text>
-                                            <Text style={styles.descriptionConfirmJoin}>{moreInfoClub.description}</Text>
+                                           <ScrollView style={styles.descriptionConfirmJoin}>
+                                            <Pressable>
+                                                 <Text style={styles.descriptionConfirmJoinText}>{moreInfoClub.description}</Text>
+                                            </Pressable>
+                                           </ScrollView>
                                             <Pressable onPress={() => serverChange(moreInfoClub)} style={styles.joinButton}>
                                                 <Text style={styles.textInButton}>Join</Text>
                                             </Pressable>

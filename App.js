@@ -22,7 +22,7 @@ import Surveys from './screens/surveys';
 import ClubSettings from './screens/clubSettings';
 import { styles } from './style';
 import { View, Image, Text, Pressable } from 'react-native';
-import homeImg from './assets/home.png'
+// import homeImg from './assets/home.png'
 import flame from './assets/flame.png'
 import flameFocus from './assets/flameFocus.png'
 import surveys from './assets/surveys.png'
@@ -35,8 +35,9 @@ import chat from './assets/chat.png'
 import chatFocus from './assets/chatFocus.png'
 import settings from './assets/settings.png'
 import settingsFocus from './assets/settingsFocus.png'
-
-import * as SplashScreen from 'expo-splash-screen';
+import { exitClub, deleteClub } from "./api"
+import AsyncStorage from '@react-native-async-storage/async-storage';
+// import * as SplashScreen from 'expo-splash-screen';
 
 
 // const getFonts = () => {
@@ -55,77 +56,116 @@ export const ClubsContNav = ({ navigation }) => {
   return (
     <>
       <Pressable style={styles.returnCont} onPress={() => navigation.navigate('Home')}>
-        <Image style={styles.imageForNav} source={homeImg} />
+        {/* <Image style={styles.imageForNav} source={homeImg} /> */}
+        <Text style={styles.textInButton}>Home</Text>
       </Pressable>
       <ContextUser.Consumer>
-        {({ user }) =>
+        {({ user, deafUs, userClubs }) =>
           <ContextClub.Consumer>
-            {({ club }) =>
-              <Tab.Navigator
-                screenOptions={{
-                  tabBarShowLabel: false,
-                  tabBarStyle: styles.buttonsAllTimeCont,
-                }}
-                initialRouteName="Events">
-                <Tab.Screen options={{
-                  headerShown: false,
-                  tabBarIcon: ({ focused }) => (
-                    <View style={styles.buttonOfNav}>
-                      <Image style={styles.imgForNav} source={focused ? calendarFocus : calendar} />
-                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Schedule</Text>
-                    </View>
-                  )
-                }} name="Calendar" component={CalendarClub} />
-                <Tab.Screen options={{
-                  headerShown: false,
-                  tabBarIcon: ({ focused }) => (
-                    <View style={styles.buttonOfNav}>
-                      <Image style={styles.imgForNav} source={focused ? chatFocus : chat} />
-                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Chat</Text>
-                    </View>
-                  )
-                }} name="Chat" component={Chat} />
+            {({ club }) => {
 
-                <Tab.Screen options={{
-                  headerShown: false,
-                  tabBarIcon: ({ focused }) => (
-                    <View style={styles.buttonOfNav}>
-                      <Image style={styles.imgForNav} source={focused ? flameFocus : flame} />
-                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Events</Text>
-                    </View>
-                  )
-                }} name="Events" component={Events} />
+              async function exit() {
+                await exitClub({
+                  userName: user.userName,
+                  clubId: club.id,
+                  userClubs: userClubs,
+                })
 
-                <Tab.Screen options={{
-                  headerShown: false,
-                  tabBarIcon: ({ focused }) => (
-                    <View style={styles.buttonOfNav}>
-                      <Image style={styles.imgForNav} source={focused ? gradesFocus : grades} />
-                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Grades</Text>
-                    </View>
-                  )
-                }} name="Grades" component={Grades} />
-                <Tab.Screen options={{
-                  headerShown: false,
-                  tabBarIcon: ({ focused }) => (
-                    <View style={styles.buttonOfNav}>
-                      <Image style={styles.imgForNav} source={focused ? surveysFocus : surveys} />
-                      <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Surveys</Text>
-                    </View>
-                  )
-                }} name="Surveys" component={Surveys} />
-                {user.userName === club.clubOwner &&
-                  <Tab.Screen options={{
-                    headerShown: false,
-                    tabBarIcon: ({ focused }) => (
-                      <View style={styles.buttonOfNav}>
-                        <Image style={styles.imgForNav} source={focused ? settingsFocus : settings} />
-                        <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Settings</Text>
-                      </View>
-                    )
-                  }} name="ClubSettings" component={ClubSettings} />}
-              </Tab.Navigator>
-            }
+                await deafUs()
+                await navigation.navigate('Home')
+                // await AsyncStorage.setItem('ClubInUse', null)
+              }
+              async function delet() {
+                await deleteClub({
+                  clubOwner: user.userName,
+                  clubsOfOwner: user.clubs,
+                  clubId: club.id,
+                }, club.id)
+
+                await deafUs()
+                await navigation.navigate('Home')
+                // await AsyncStorage.setItem('ClubInUse', null)
+              }
+
+
+              return (
+                <>
+                  {user.userName === club.clubOwner ?
+                    <Pressable onPress={delet} style={styles.redButton}>
+                      <Text style={styles.textInButton}>Delete club</Text>
+                    </Pressable>
+                    :
+                    <Pressable onPress={exit} style={styles.redButton}>
+                      <Text style={styles.textInButton}>Exit club</Text>
+                    </Pressable>
+                  }
+                  <Tab.Navigator
+                    screenOptions={{
+                      tabBarShowLabel: false,
+                      tabBarStyle: styles.buttonsAllTimeCont,
+                    }}
+                    initialRouteName="Events">
+                    <Tab.Screen options={{
+                      headerShown: false,
+                      tabBarIcon: ({ focused }) => (
+                        <View style={styles.buttonOfNav}>
+                          <Image style={styles.imgForNav} source={focused ? calendarFocus : calendar} />
+                          <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Schedule</Text>
+                        </View>
+                      )
+                    }} name="Calendar" component={CalendarClub} />
+                    <Tab.Screen options={{
+                      headerShown: false,
+                      tabBarIcon: ({ focused }) => (
+                        <View style={styles.buttonOfNav}>
+                          <Image style={styles.imgForNav} source={focused ? chatFocus : chat} />
+                          <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Chat</Text>
+                        </View>
+                      )
+                    }} name="Chat" component={Chat} />
+
+                    <Tab.Screen options={{
+                      headerShown: false,
+                      tabBarIcon: ({ focused }) => (
+                        <View style={styles.buttonOfNav}>
+                          <Image style={styles.imgForNav} source={focused ? flameFocus : flame} />
+                          <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Events</Text>
+                        </View>
+                      )
+                    }} name="Events" component={Events} />
+
+                    <Tab.Screen options={{
+                      headerShown: false,
+                      tabBarIcon: ({ focused }) => (
+                        <View style={styles.buttonOfNav}>
+                          <Image style={styles.imgForNav} source={focused ? gradesFocus : grades} />
+                          <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Grades</Text>
+                        </View>
+                      )
+                    }} name="Grades" component={Grades} />
+                    <Tab.Screen options={{
+                      headerShown: false,
+                      tabBarIcon: ({ focused }) => (
+                        <View style={styles.buttonOfNav}>
+                          <Image style={styles.imgForNav} source={focused ? surveysFocus : surveys} />
+                          <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Surveys</Text>
+                        </View>
+                      )
+                    }} name="Surveys" component={Surveys} />
+                    {user.userName === club.clubOwner &&
+                      <Tab.Screen options={{
+                        headerShown: false,
+                        tabBarIcon: ({ focused }) => (
+                          <View style={styles.buttonOfNav}>
+                            <Image style={styles.imgForNav} source={focused ? settingsFocus : settings} />
+                            <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Settings</Text>
+                          </View>
+                        )
+                      }} name="ClubSettings" component={ClubSettings} />}
+                  </Tab.Navigator>
+                </>
+              )
+            }}
           </ContextClub.Consumer>
         }
       </ContextUser.Consumer>
