@@ -137,7 +137,7 @@ export const styles = StyleSheet.create({
     },
     imgInCardCont: {
         width: '100%',
-        height: 140,
+        height: 180,
         borderRadius: 15,
         marginBottom: 10,
         overflow: 'hidden'
