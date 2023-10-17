@@ -67,7 +67,7 @@ const Home = ({ navigation }) => {
                                 {userClubs.length > 0 ?
                                     <ScrollView
                                         refreshControl={
-                                            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                            <RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />
                                         }>
                                         <View style={styles.clubListCont}>
                                             {userClubs.map((clubCard) => {
@@ -81,7 +81,7 @@ const Home = ({ navigation }) => {
                                     <ScrollView
                                         style={styles.EmptyMsgConr}
                                         refreshControl={
-                                            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                            <RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />
                                         }
                                     >
                                         <View style={styles.EmptyMsg}>

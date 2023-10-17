@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, View, Image, Text, Pressable, ScrollView, RefreshControl, Animated, TextInput } from "react-native"
+import { ActivityIndicator, View, Image, Text, Pressable, ScrollView, TextInput } from "react-native"
 import Layout from "../components/layout";
 import { ContextUser, CustomProvider } from '../context/userContext'
 import { styles } from "../style";

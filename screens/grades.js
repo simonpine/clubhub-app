@@ -28,7 +28,7 @@ const Grades = ({ navigation }) => {
                                         <ScrollView
                                             automaticallyAdjustKeyboardInsets={true}
                                             refreshControl={
-                                                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                                <RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />
                                             }
                                         >
                                             <View style={styles.EventsCont}>

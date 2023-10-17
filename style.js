@@ -511,7 +511,7 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         position: 'absolute',
         top: 50,
-        left: '5%',
+        right: '5%',
         zIndex: 100
     },
     imageForNav: {
@@ -754,7 +754,7 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         position: 'absolute',
         top: 50,
-        right: '5%',
+        left: '5%',
         zIndex: 100
     }
 });

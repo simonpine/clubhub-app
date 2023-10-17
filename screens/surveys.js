@@ -461,7 +461,7 @@ const Surveys = ({ navigation }) => {
                                         <Layout>
                                             <ScrollView
                                                 refreshControl={
-                                                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                                                    <RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />
                                                 }
                                             >
                                                 <View style={styles.chatCont}>

@@ -361,7 +361,7 @@ const ClubSettings = ({ navigation }) => {
                                             </Pressable>
                                         }
                                         <Layout>
-                                            <ScrollView automaticallyAdjustKeyboardInsets={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+                                            <ScrollView automaticallyAdjustKeyboardInsets={true} refreshControl={<RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />}>
                                                 <View style={styles.all} >
                                                     <Text style={styles.inputDescrip}>Change banner:</Text>
                                                     <View style={styles.imageUploader}>
