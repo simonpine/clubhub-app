@@ -132,7 +132,8 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'Geologica-Thin',
         fontSize: 15,
-        height: 80,
+        height: 38,
+        // height: 80,
     },
     imgInCardCont: {
         width: '100%',
