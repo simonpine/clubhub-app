@@ -4,7 +4,7 @@ import { styles } from "../style";
 import { ContextUser } from '../context/userContext'
 import { ContextClub } from "../context/clubContext";
 import { useState } from "react";
-import { usersImg, getUser } from "../api";
+import { usersImg, getUser, exitClub } from "../api";
 import more from '../assets/more.png'
 import closeImage from '../assets/close.png'
 
@@ -33,6 +33,17 @@ const Leaderboard = ({ navigation }) => {
                                     setRefreshing(false);
                                 }, 2000);
                             }
+
+                            async function chao(userName, clubsOfUser) {
+                                await setSure(false)
+                                await exitClub({
+                                    userName: userName,
+                                    clubId: club.id,
+                                    userClubs: clubsOfUser,
+                                })
+                                await deaf()
+                            }
+
                             return user !== null && club !== null ? (
                                 <>
                                     {sure &&
@@ -47,6 +58,10 @@ const Leaderboard = ({ navigation }) => {
                                                     {userInfo.userImg !== 'null' & userInfo.userImg !== null ? <Image style={styles.imageOfClubConfimJoin} source={{ uri: usersImg + userInfo.userImg }} /> : <></>}
                                                     <Text style={styles.textTilteConfirmJoin}>{userInfo.userName}</Text>
                                                     <Text style={styles.descriptionConfirmJoin}>{userInfo.description}</Text>
+                                                    {user.userName === club.clubOwner &&
+                                                        <Pressable style={styles.deleteButton} onPress={() => chao(userInfo.userName, userInfo.clubs)}>
+                                                            <Text style={styles.textInButton}>Expel member</Text>
+                                                        </Pressable>}
                                                 </View>
                                             </Pressable>
                                         </Pressable>
@@ -73,14 +88,14 @@ const Leaderboard = ({ navigation }) => {
                                                             fontSize: 20
                                                         }
                                                     }
-                                                    else if(index === 1){
+                                                    else if (index === 1) {
                                                         idk = {
                                                             color: '#BDBDBD',
                                                             fontFamily: 'Geologica-Bold',
                                                             fontSize: 20
                                                         }
                                                     }
-                                                    else if(index === 2){
+                                                    else if (index === 2) {
                                                         idk = {
                                                             color: '#9A673D',
                                                             fontFamily: 'Geologica-Bold',

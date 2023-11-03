@@ -4,7 +4,7 @@ import { styles } from "../style";
 import { ContextUser } from '../context/userContext'
 import { ContextClub } from "../context/clubContext";
 import { useState } from "react";
-import { chatsFlies, usersImg, getUser } from "../api";
+import { chatsFlies, usersImg, getUser, exitClub } from "../api";
 import file from '../assets/document.png'
 import closeImage from '../assets/close.png'
 
@@ -125,7 +125,15 @@ const Chat = ({ navigation }) => {
 
                             }
 
-
+                            async function chao(userName, clubsOfUser) {
+                                await setSure(false)
+                                await exitClub({
+                                    userName: userName,
+                                    clubId: club.id,
+                                    userClubs: clubsOfUser,
+                                })
+                                await deaf()
+                            }
 
                             return user !== null && club !== null ? (
                                 <>
@@ -141,6 +149,10 @@ const Chat = ({ navigation }) => {
                                                     {userInfo.userImg !== 'null' & userInfo.userImg !== null ? <Image style={styles.imageOfClubConfimJoin} source={{ uri: usersImg + userInfo.userImg }} /> : <></>}
                                                     <Text style={styles.textTilteConfirmJoin}>{userInfo.userName}</Text>
                                                     <Text style={styles.descriptionConfirmJoin}>{userInfo.description}</Text>
+                                                    {user.userName === club.clubOwner &&
+                                                        <Pressable style={styles.deleteButton} onPress={() => chao(userInfo.userName, userInfo.clubs)}>
+                                                            <Text style={styles.textInButton}>Expel member</Text>
+                                                        </Pressable>}
                                                 </View>
                                             </Pressable>
                                         </Pressable>
