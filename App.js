@@ -22,11 +22,13 @@ import Surveys from './screens/surveys';
 import ClubSettings from './screens/clubSettings';
 import { styles } from './style';
 import { View, Image, Text, Pressable } from 'react-native';
-// import homeImg from './assets/home.png'
+import homeImg from './assets/home.png'
 import flame from './assets/flame.png'
 import flameFocus from './assets/flameFocus.png'
 import surveys from './assets/surveys.png'
 import surveysFocus from './assets/surveysFocus.png'
+import stats from './assets/stats.png'
+import statsFocus from './assets/statsFocus.png'
 import grades from './assets/gardes.png'
 import gradesFocus from './assets/gardesFocus.png'
 import calendar from './assets/calendar.png'
@@ -36,6 +38,7 @@ import chatFocus from './assets/chatFocus.png'
 import settings from './assets/settings.png'
 import settingsFocus from './assets/settingsFocus.png'
 import { exitClub, deleteClub } from "./api"
+import Leaderboard from './screens/leaderboard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import * as SplashScreen from 'expo-splash-screen';
 
@@ -56,8 +59,8 @@ export const ClubsContNav = ({ navigation }) => {
   return (
     <>
       <Pressable style={styles.returnCont} onPress={() => navigation.navigate('Home')}>
-        {/* <Image style={styles.imageForNav} source={homeImg} /> */}
-        <Text style={styles.textInButton}>Home</Text>
+        <Image style={styles.imageForNav} source={homeImg} />
+        {/* <Text style={styles.textInButton}>Home</Text> */}
       </Pressable>
       <ContextUser.Consumer>
         {({ user, deafUs, userClubs }) =>
@@ -99,6 +102,7 @@ export const ClubsContNav = ({ navigation }) => {
                       <Text style={styles.textInButton}>Exit club</Text>
                     </Pressable>
                   }
+
                   <Tab.Navigator
                     screenOptions={{
                       tabBarShowLabel: false,
@@ -114,7 +118,7 @@ export const ClubsContNav = ({ navigation }) => {
                         </View>
                       )
                     }} name="Calendar" component={CalendarClub} />
-                    <Tab.Screen options={{
+                    {club.existChat ? <Tab.Screen options={{
                       headerShown: false,
                       tabBarIcon: ({ focused }) => (
                         <View style={styles.buttonOfNav}>
@@ -122,7 +126,7 @@ export const ClubsContNav = ({ navigation }) => {
                           <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Chat</Text>
                         </View>
                       )
-                    }} name="Chat" component={Chat} />
+                    }} name="Chat" component={Chat} /> : <></>}
 
                     <Tab.Screen options={{
                       headerShown: false,
@@ -134,7 +138,7 @@ export const ClubsContNav = ({ navigation }) => {
                       )
                     }} name="Events" component={Events} />
 
-                    <Tab.Screen options={{
+                    {club.existGrades ? <Tab.Screen options={{
                       headerShown: false,
                       tabBarIcon: ({ focused }) => (
                         <View style={styles.buttonOfNav}>
@@ -142,7 +146,7 @@ export const ClubsContNav = ({ navigation }) => {
                           <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Grades</Text>
                         </View>
                       )
-                    }} name="Grades" component={Grades} />
+                    }} name="Grades" component={Grades} /> : <></>}
                     <Tab.Screen options={{
                       headerShown: false,
                       tabBarIcon: ({ focused }) => (
@@ -152,6 +156,18 @@ export const ClubsContNav = ({ navigation }) => {
                         </View>
                       )
                     }} name="Surveys" component={Surveys} />
+
+                    <Tab.Screen options={{
+                      headerShown: false,
+                      tabBarIcon: ({ focused }) => (
+                        <View style={styles.buttonOfNav}>
+                          <Image style={styles.imgForNav} source={focused ? statsFocus : stats} />
+                          <Text style={focused ? styles.textForNavButtonsFocus : styles.textForNavButtons}>Leaderboard</Text>
+                        </View>
+                      )
+                    }} name="Leaderboard" component={Leaderboard} />
+
+
                     {user.userName === club.clubOwner &&
                       <Tab.Screen options={{
                         headerShown: false,

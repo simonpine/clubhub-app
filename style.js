@@ -96,7 +96,7 @@ export const styles = StyleSheet.create({
     all: {
         paddingHorizontal: '5%',
         marginTop: 60,
-        marginBottom: 120
+        marginBottom: 220
     },
     all2: {
         paddingHorizontal: '5%',
@@ -392,7 +392,7 @@ export const styles = StyleSheet.create({
     },
     imageOfClubConfimJoin: {
         width: 320,
-        height: 150,
+        height: 250,
         borderRadius: 10,
         marginTop: 10
     },
@@ -434,7 +434,8 @@ export const styles = StyleSheet.create({
         width: 75,
     },
     joinCont: {
-        marginTop: 20
+        marginTop: 20,
+        marginBottom: 140
     },
     imageUploader: {
         borderColor: '#d6ad7b',
@@ -505,7 +506,7 @@ export const styles = StyleSheet.create({
         // position: 'absolute',
         // top: 50,
         // left: '5%',
-        // zIndex: 100
+        // zIndex: 100,
         // padding: 15,
         paddingHorizontal: 20,
         paddingVertical: 7.5,
@@ -563,7 +564,7 @@ export const styles = StyleSheet.create({
         height: 35.9
     },
     widthForBoxes: {
-        marginTop: 20,
+        // marginTop: 20,
         width: 320,
         maxHeight: 400
     },
@@ -757,5 +758,46 @@ export const styles = StyleSheet.create({
         top: 50,
         left: '5%',
         zIndex: 100
+    },
+    textNextToBox: {
+        color: '#ffffff',
+        fontFamily: 'Geologica-Thin',
+        fontSize: 17,
+        marginLeft: 10
+    },
+    contOfBoxAndText:{
+        flexDirection: 'row-reverse',
+        alignContent: 'flex-start',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-end',
+        marginBottom: 20
+    },
+    itemInLeaderboard: {
+        backgroundColor: 'rgba(0, 0, 0, 0.60196078)',
+        marginBottom: 10,
+        marginTop: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 15,
+        paddingRight: 0,
+        borderRadius: 10,
+        alignContent: 'center',
+        alignItems: 'center'
+    },
+    more: {
+        width: 35,
+        height: 35
+    },
+    nameInList: {
+        color: '#ffff',
+        fontFamily: 'Geologica-Regular',
+        fontSize: 18,
+        marginLeft: 10
+    },
+    numPlusName: {
+        flexDirection: 'row',
+        alignContent: 'center',
+        alignItems: 'center'
     }
+    
 });

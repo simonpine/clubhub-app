@@ -1,5 +1,6 @@
 import { ActivityIndicator, View, Image, Text, Pressable, ScrollView, TextInput } from "react-native"
 import Layout from "../components/layout";
+import Checkbox from 'expo-checkbox';
 import { ContextUser, CustomProvider } from '../context/userContext'
 import { styles } from "../style";
 import { useState } from "react";
@@ -7,6 +8,9 @@ import { newClub } from "../api";
 import upload from '../assets/upload.png'
 
 const CreateClub = ({ navigation }) => {
+
+    const [isChecked, setChecked] = useState(false);
+    const [isChecked2, setChecked2] = useState(false);
 
     const [loading, setloading] = useState(false)
 
@@ -92,6 +96,16 @@ const CreateClub = ({ navigation }) => {
                                         style={styles.input}
                                         placeholder="A cinema club is a gathering of film enthusiasts who come together to watch and discuss movies. It provides a space for like-minded individuals to share their love for cinema, explore different genres, and engage in meaningful conversations about films."
                                     />
+                                    <View>
+                                        <View style={styles.contOfBoxAndText}>
+                                            <Text style={styles.textNextToBox}>Have chat</Text>
+                                            <Checkbox style={styles.checkbox} value={isChecked} onValueChange={setChecked} />
+                                        </View>
+                                        <View style={styles.contOfBoxAndText}>
+                                            <Text style={styles.textNextToBox}>Have grades</Text>
+                                            <Checkbox style={styles.checkbox} value={isChecked2} onValueChange={setChecked2} />
+                                        </View>
+                                    </View>
                                     <Pressable style={styles.disabled}>
                                         <Text style={styles.textInButton}>Create</Text>
                                     </Pressable>

@@ -179,3 +179,21 @@ export const deleteSurvey = async (obj) => {
     })
 
 }
+
+export const sortMembers = async (obj) => {
+    await fetch(`${API3}/sortMembers`, {
+        method: 'POST',
+        headers: { Accept: 'application/json', "Content-Type": 'application/json' },
+        body: obj
+    })
+
+}
+
+export const changeExists = async (obj) => {
+    await fetch(`${API3}/changeExists`, {
+        method: 'POST',
+        headers: { Accept: 'application/json', "Content-Type": 'application/json' },
+        body: obj
+    })
+
+}
