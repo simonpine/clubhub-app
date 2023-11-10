@@ -148,13 +148,13 @@ const Events = ({ navigation }) => {
                                                             {(evt.typeMess !== 'file' & evt.typeMess !== 'text+file') ?
                                                                 <View className="mess messEvents" >
                                                                     <Text style={styles.dateMessage}>{evt.date}</Text>
-                                                                    {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
+                                                                    {evt.message !== 'null' ? <Text style={styles.textMessage}>{evt.message}</Text> : <></>}
                                                                     {evt.fileName !== null & evt.fileName !== 'null' ? <Image style={styles.imgUploadedByUser} source={{ uri: chatsFlies + evt.fileName }} /> : <></>}
                                                                 </View>
                                                                 :
                                                                 <View className="mess messEvents" >
                                                                     <Text style={styles.dateMessage}>{evt.date}</Text>
-                                                                    {evt.message !== 'null' && <Text style={styles.textMessage}>{evt.message}</Text>}
+                                                                    {evt.message !== 'null' ? <Text style={styles.textMessage}>{evt.message}</Text> : <></>}
                                                                     <View style={styles.documentContainer}>
                                                                         <Image style={styles.documentImg} source={file} />
                                                                         <Text style={styles.textOfDownload}>Download</Text>

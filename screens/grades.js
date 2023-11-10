@@ -31,51 +31,59 @@ const Grades = ({ navigation }) => {
                                                 <RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />
                                             }
                                         >
-                                            <View style={styles.EventsCont}>
-                                                <DataTable style={styles.table}>
-                                                    <DataTable.Header style={styles.tableHeader}>
-                                                        <DataTable.Title ></DataTable.Title>
-                                                        {grades.students.map(item => {
-                                                            return item.studentName === user.userName || user.userName === club.clubOwner ? (
-                                                                <DataTable.Title key={item.studentName} ><Text style={styles.HeaderTitlesGrades}>{item.studentName}</Text></DataTable.Title>
-                                                            ) :
-                                                                (<Text key={item.studentName} ></Text>)
-                                                        })
-                                                        }
-                                                    </DataTable.Header>
-                                                    {grades.grades.map((gra, index) => {
-                                                        return (
-                                                            <DataTable.Row key={index}>
-                                                                <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>{gra}</Text></DataTable.Cell>
-                                                                {grades.students.map(stu => {
-                                                                    return stu.studentName === user.userName || user.userName === club.clubOwner ? (
-                                                                        <DataTable.Cell key={stu.studentName + index}><Text style={styles.gradeInTable}>     {stu.gardes[index]}</Text></DataTable.Cell>
-                                                                    )
-                                                                        :
-                                                                        (
-                                                                            <Text key={stu.studentName + index}></Text>
+                                            {club.members.length > 0 ?
+                                                <View style={styles.EventsCont}>
+                                                    <DataTable style={styles.table}>
+                                                        <DataTable.Header style={styles.tableHeader}>
+                                                            <DataTable.Title ></DataTable.Title>
+                                                            {grades.students.map(item => {
+                                                                return item.studentName === user.userName || user.userName === club.clubOwner ? (
+                                                                    <DataTable.Title key={item.studentName} ><Text style={styles.HeaderTitlesGrades}>{item.studentName}</Text></DataTable.Title>
+                                                                ) :
+                                                                    (<Text key={item.studentName} ></Text>)
+                                                            })
+                                                            }
+                                                        </DataTable.Header>
+                                                        {grades.grades.map((gra, index) => {
+                                                            return (
+                                                                <DataTable.Row key={index}>
+                                                                    <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>{gra}</Text></DataTable.Cell>
+                                                                    {grades.students.map(stu => {
+                                                                        return stu.studentName === user.userName || user.userName === club.clubOwner ? (
+                                                                            <DataTable.Cell key={stu.studentName + index}><Text style={styles.gradeInTable}>     {stu.gardes[index]}</Text></DataTable.Cell>
                                                                         )
-                                                                })
-                                                                }
-                                                            </DataTable.Row>
-                                                        )
-                                                    })
-                                                    }
-                                                    <DataTable.Row >
-                                                        <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>Totla: </Text></DataTable.Cell>
-                                                        {grades.students.map(stu => {
-                                                            return stu.studentName === user.userName || user.userName === club.clubOwner ? (
-                                                                <DataTable.Cell key={stu.studentName}><Text style={styles.gradeInTable}>  {stu.total}</Text></DataTable.Cell>
+                                                                            :
+                                                                            (
+                                                                                <Text key={stu.studentName + index}></Text>
+                                                                            )
+                                                                    })
+                                                                    }
+                                                                </DataTable.Row>
                                                             )
-                                                                :
-                                                                (
-                                                                    <Text key={stu.studentName}></Text>
-                                                                )
                                                         })
                                                         }
-                                                    </DataTable.Row>
-                                                </DataTable>
-                                            </View>
+                                                        <DataTable.Row >
+                                                            <DataTable.Cell><Text style={styles.HeaderTitlesGrades}>Totla: </Text></DataTable.Cell>
+                                                            {grades.students.map(stu => {
+                                                                return stu.studentName === user.userName || user.userName === club.clubOwner ? (
+                                                                    <DataTable.Cell key={stu.studentName}><Text style={styles.gradeInTable}>  {stu.total}</Text></DataTable.Cell>
+                                                                )
+                                                                    :
+                                                                    (
+                                                                        <Text key={stu.studentName}></Text>
+                                                                    )
+                                                            })
+                                                            }
+                                                        </DataTable.Row>
+                                                    </DataTable>
+                                                </View>
+                                                :
+                                                <View style={styles.centerNoMembers}>
+                                                    <View style={styles.centerNoMembersCont}>
+                                                        <Text style={styles.textOfNoMembers}>There are no members</Text>
+                                                    </View>
+                                                </View>
+                                            }
                                         </ScrollView>
                                     </Layout>
                                 </>

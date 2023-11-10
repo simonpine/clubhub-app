@@ -489,7 +489,7 @@ export const styles = StyleSheet.create({
     },
     imgUploadedByUser: {
         width: '100%',
-        height: 150,
+        height: 220,
         borderRadius: 10,
         marginTop: 10,
     },
@@ -798,6 +798,68 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignContent: 'center',
         alignItems: 'center'
-    }
-    
+    },
+    centerNoMembers: {
+        height: 750,
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    textOfNoMembers: {
+        color: '#ffffff',
+        fontFamily: 'Geologica-Regular',
+        fontSize: 20,
+        marginLeft: 10,
+        padding: 15,
+        paddingLeft: 8
+
+    },
+    centerNoMembersCont: {
+        backgroundColor: 'rgba(0, 0, 0, 0.60196078)',
+        borderRadius: 100,
+    },
+    disabledExp: {
+        backgroundColor: 'rgba(255, 0, 0, 0.2941176471)',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        opacity: 0.5,
+        // marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
+        marginTop: 20
+    },
+    NotdisabledExp: {
+        backgroundColor: 'rgba(255, 0, 0, 0.2941176471)',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        // marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
+        marginTop: 20
+    },
+    disabledExp2: {
+        backgroundColor: 'rgba(255, 0, 0, 0.2941176471)',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        opacity: 0.5,
+        // marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
+    },
+    NotdisabledExp2: {
+        backgroundColor: 'rgba(255, 0, 0, 0.2941176471)',
+        alignSelf: 'flex-start',
+        paddingHorizontal: 20,
+        paddingVertical: 7.5,
+        borderRadius: 100,
+        // marginBottom: 20,
+        width: '100%',
+        alignItems: 'center',
+    },
 });

@@ -5,12 +5,16 @@ import { styles } from "../style";
 import { ContextUser } from '../context/userContext'
 import { ContextClub } from "../context/clubContext";
 import { useState } from "react";
-import { BannersImg, editClub } from "../api"
+import { BannersImg, editClub, getUser, exitClub } from "../api"
 import upload from '../assets/upload.png'
 import Checkbox from 'expo-checkbox';
-// import {subm}
+import closeImage from '../assets/close.png'
+import SelectDropdown from "react-native-select-dropdown";
 
 const ClubSettings = ({ navigation }) => {
+
+    const [whoToExpel, setWhoToExpel] = useState('')
+    const [expeling, setExpeling] = useState(false)
 
     const [exist, setExist] = useState(false)
 
@@ -102,7 +106,7 @@ const ClubSettings = ({ navigation }) => {
                                         club.description = descriptioRef
                                         user.clubs = newClubsArray
                                     }
-                                     else if (descriptioRef === '' & selectedImage === null & nameRef !== '') {
+                                    else if (descriptioRef === '' & selectedImage === null & nameRef !== '') {
 
 
                                         const newClubsArray = await user.clubs.filter(item => item.clubId !== club.id)
@@ -299,7 +303,7 @@ const ClubSettings = ({ navigation }) => {
                                         user.clubs = newClubsArray
                                         club.description = descriptioRef
                                     }
-                                    else if(selectedImage !== null & nameRef !== '' & descriptioRef !== '') {
+                                    else if (selectedImage !== null & nameRef !== '' & descriptioRef !== '') {
 
                                         const UploadFile = await renameFile(selectedImage, club.id)
                                         await formData.append('image', UploadFile)
@@ -340,16 +344,16 @@ const ClubSettings = ({ navigation }) => {
                                         club.title = nameRef
                                         user.clubs = newClubsArray
                                     }
-                                    
-                                    if(exist){
-                                        if(checked !== club.existChat){
+
+                                    if (exist) {
+                                        if (checked !== club.existChat) {
                                             await changeExists(JSON.stringify({
                                                 which: 'chat',
                                                 clubId: club.id,
                                                 newData: checked
                                             }))
                                         }
-                                        if(checked2 !== club.existGrades){
+                                        if (checked2 !== club.existGrades) {
                                             await changeExists(JSON.stringify({
                                                 which: 'grades',
                                                 clubId: club.id,
@@ -380,6 +384,22 @@ const ClubSettings = ({ navigation }) => {
                                         setChecked(!!club.existChat)
                                     }
                                 }
+
+                                async function chao() {
+                                    await setloading(true)
+                                    const info = await getUser(whoToExpel)
+                                    const toSelect = await info[0]
+                                    await exitClub({
+                                        userName: toSelect.userName,
+                                        clubId: club.id,
+                                        userClubs: toSelect.clubs,
+                                    })
+                                    await deaf()
+                                    await setExpeling(false)
+                                    await setWhoToExpel('')
+                                    await setloading(false)
+                                }
+
                                 return user !== null && club !== null ? (
                                     <>
                                         {sure &&
@@ -401,9 +421,41 @@ const ClubSettings = ({ navigation }) => {
                                                 </Pressable>
                                             </Pressable>
                                         }
+                                        {expeling &&
+                                            <Pressable onPress={() => setExpeling(false)} style={styles.buttonToFlyBoxes}>
+                                                <Pressable style={styles.boxToConfirm}>
+                                                    <Pressable onPress={() => {
+                                                        setExpeling(false)
+                                                    }}>
+                                                        <Image style={styles.closeButton} source={closeImage} />
+                                                    </Pressable>
+                                                    <View style={styles.widthForBoxes}>
+
+
+                                                        <Text style={styles.inputDescrip}>Select the member to expel:</Text>
+                                                        <SelectDropdown
+                                                            dropdownStyle={styles.dropdown4DropdownStyle}
+                                                            buttonTextStyle={styles.dropdown4BtnTxtStyle}
+                                                            buttonStyle={styles.input}
+                                                            data={club.members}
+                                                            rowTextStyle={styles.dropdown4RowTxtStyle}
+                                                            defaultButtonText={"Select:"}
+                                                            onSelect={(selectedItem) => {
+                                                                setWhoToExpel(selectedItem)
+                                                            }}
+                                                        />
+                                                        <Pressable disabled={whoToExpel.length === 0} style={whoToExpel === '' ? styles.disabledExp2 : styles.NotdisabledExp2} onPress={() => chao()}>
+                                                            <Text style={styles.textInButton}>Expel member</Text>
+                                                        </Pressable>
+                                                    </View>
+                                                </Pressable>
+                                            </Pressable>
+                                        }
                                         <Layout>
                                             <ScrollView automaticallyAdjustKeyboardInsets={true} refreshControl={<RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />}>
                                                 <View style={styles.all} >
+                                                    <Text style={styles.textTilte}>Club settings</Text>
+
                                                     <Text style={styles.inputDescrip}>Change banner:</Text>
                                                     <View style={styles.imageUploader}>
                                                         <Image style={styles.upImga} source={upload} />
@@ -439,17 +491,21 @@ const ClubSettings = ({ navigation }) => {
                                                         <View>
                                                             <View style={styles.contOfBoxAndText}>
                                                                 <Text style={styles.textNextToBox}>Have chat</Text>
-                                                                <Checkbox style={styles.checkbox} value={club.existChat === 1} onValueChange={()=> changedTheExist(1)} />
+                                                                <Checkbox style={styles.checkbox} value={club.existChat === 1} onValueChange={() => changedTheExist(1)} />
                                                             </View>
                                                             <View style={styles.contOfBoxAndText}>
                                                                 <Text style={styles.textNextToBox}>Have grades</Text>
-                                                                <Checkbox style={styles.checkbox} value={club.existGrades === 1} onValueChange={()=> changedTheExist()} />
+                                                                <Checkbox style={styles.checkbox} value={club.existGrades === 1} onValueChange={() => changedTheExist()} />
                                                             </View>
                                                         </View>
                                                     }
 
                                                     <Pressable onPress={() => setSure(true)} disabled={nameRef === '' & descriptioRef === '' & exist === false} style={nameRef === '' & descriptioRef === '' & exist === false ? styles.disabled : styles.Notdisabled}>
                                                         <Text style={styles.textInButton}>Save changes</Text>
+                                                    </Pressable>
+
+                                                    <Pressable onPress={() => setExpeling(true)} disabled={club.members.length === 0} style={club.members.length === 0 ? styles.disabledExp : styles.NotdisabledExp}>
+                                                        <Text style={styles.textInButton}>Expel a member</Text>
                                                     </Pressable>
                                                 </View>
 

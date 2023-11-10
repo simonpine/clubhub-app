@@ -74,7 +74,8 @@ const Leaderboard = ({ navigation }) => {
                                                 <RefreshControl tintColor='#d6ad7b' refreshing={refreshing} onRefresh={onRefresh} />
                                             }
                                         >
-                                            <View style={styles.EventsCont}>
+                                            {club.members.length > 0 ?
+                                                <View style={styles.EventsCont}>
                                                 {club.members.map((item, index) => {
                                                     let idk = {
                                                         color: '#ffff',
@@ -115,6 +116,12 @@ const Leaderboard = ({ navigation }) => {
                                                     )
                                                 })}
                                             </View>
+                                            :
+                                            <View style={styles.centerNoMembers}>
+                                                <View style={styles.centerNoMembersCont}>
+                                                    <Text style={styles.textOfNoMembers}>There are no members</Text>
+                                                </View>
+                                            </View>}
                                         </ScrollView>
                                     </Layout>
                                 </>
